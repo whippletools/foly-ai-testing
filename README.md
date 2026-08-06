@@ -33,12 +33,12 @@ npx playwright install
 
 ## Configuración
 
-Copia o edita `.env` con tus credenciales:
+Crea un archivo `.env` en la raíz con las variables requeridas (no versionar):
 
 ```env
-FOLY_LOGIN_USER=tu_usuario
-FOLY_LOGIN_PASS=tu_contraseña
-FOLY_LOGIN_OTP=tu_codigo_otp
+FOLY_LOGIN_USER=
+FOLY_LOGIN_PASS=
+FOLY_LOGIN_OTP=
 ```
 
 ## Ejecución

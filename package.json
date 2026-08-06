@@ -1,0 +1,27 @@
+{
+  "name": "foly-pruebas-e2e",
+  "version": "1.0.0",
+  "description": "Pruebas E2E para ERP Foly usando Playwright y TypeScript",
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:ui": "playwright test --ui",
+    "test:ui:chromium": "playwright test --ui --project=chromium",
+    "test:fast": "playwright test --project=chromium --no-deps --ignore-snapshots",
+    "test:fast:modules": "playwright test --project=chromium --no-deps tests/modulos-carga.spec.ts tests/modulos-navegacion.spec.ts",
+    "test:ui:fast": "playwright test --ui --project=chromium --no-deps",
+    "test:login": "playwright test --project=chromium tests/login.spec.ts",
+    "test:report": "playwright show-report",
+    "test:debug": "playwright test --project=chromium --headed --debug"
+  },
+  "keywords": ["playwright", "e2e", "testing", "erp", "foly"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.0",
+    "dotenv": "^17.4.2"
+  }
+}
