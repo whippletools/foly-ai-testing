@@ -14,14 +14,24 @@
     "test:ui:fast": "playwright test --ui --project=chromium --no-deps",
     "test:login": "playwright test --project=chromium tests/login.spec.ts",
     "test:report": "playwright show-report",
+    "test:report:allure": "allure generate allure-results --single-file --clean -o allure-report",
+    "test:open:allure": "allure open allure-report",
     "test:debug": "playwright test --project=chromium --headed --debug"
   },
-  "keywords": ["playwright", "e2e", "testing", "erp", "foly"],
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "erp",
+    "foly"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.0",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2",
     "dotenv": "^17.4.2"
   }
 }

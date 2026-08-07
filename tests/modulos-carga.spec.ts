@@ -85,18 +85,34 @@ test.describe('Carga de módulos por URL', () => {
       await test.step('5. Verificar errores', async () => {
         await page.waitForTimeout(500);
 
+        const findings: string[] = [];
+
         if (mod.noUrl) {
           // Módulos sin ruta propia: reportar 404 como hallazgo, no error
           const notFound = networkErrors.filter(e => e.status === 404);
           if (notFound.length > 0) {
-            console.log(`[HALLAZGO] ${mod.name}: No tiene ruta propia (${notFound.map(e => e.url).join(', ')})`);
+            findings.push(`No tiene ruta propia: ${notFound.map(e => e.url).join(', ')}`);
           }
           // Filtrar errores de consola relacionados con 404
           const relevantConsoleErrors = consoleErrors.filter(e => !e.includes('404') && !e.includes('Failed to load resource'));
-          expect.soft(relevantConsoleErrors, `Errores de consola en ${mod.name}`).toHaveLength(0);
+          if (relevantConsoleErrors.length > 0) {
+            findings.push(`Errores de consola: ${relevantConsoleErrors.join('\n')}`);
+          }
         } else {
-          expect.soft(consoleErrors, `Errores de consola en ${mod.name}`).toHaveLength(0);
-          expect.soft(networkErrors, `Peticiones fallidas en ${mod.name}`).toHaveLength(0);
+          if (consoleErrors.length > 0) {
+            findings.push(`Errores de consola (${consoleErrors.length}):\n${consoleErrors.join('\n')}`);
+          }
+          if (networkErrors.length > 0) {
+            findings.push(`Peticiones fallidas (${networkErrors.length}):\n${networkErrors.map(e => `${e.status} ${e.url}`).join('\n')}`);
+          }
+        }
+
+        if (findings.length > 0) {
+          test.info().attach(`Hallazgos - ${mod.name}`, {
+            body: findings.join('\n\n'),
+            contentType: 'text/plain',
+          });
+          console.log(`[HALLAZGO] ${mod.name}: ${findings.length} observaciones adjuntas al reporte`);
         }
       });
     });

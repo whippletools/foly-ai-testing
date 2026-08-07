@@ -33,6 +33,7 @@ export default defineConfig({
   reporter: [
     ['html', { open: 'never' }],
     ['line'],
+    ['allure-playwright', { detail: true, suiteTitle: false }],
   ],
 
   /* Timeouts globales */
