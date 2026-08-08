@@ -12,6 +12,7 @@
     "test:fast": "playwright test --project=chromium --no-deps --ignore-snapshots",
     "test:fast:modules": "playwright test --project=chromium --no-deps tests/modulos-carga.spec.ts tests/modulos-navegacion.spec.ts",
     "test:ui:fast": "playwright test --ui --project=chromium --no-deps",
+    "test:ui:pedidos": "playwright test --ui --project=chromium tests/pedidos.spec.ts",
     "test:login": "playwright test --project=chromium tests/login.spec.ts",
     "test:report": "playwright show-report",
     "test:report:allure": "allure generate allure-results --single-file --clean -o allure-report",

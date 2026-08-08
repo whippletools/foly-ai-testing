@@ -79,9 +79,23 @@ export class LoginPage {
       await this.page.waitForTimeout(200);
     }
 
+    /* Diagnóstico: capturar qué está viendo realmente la página */
+    const url = this.page.url();
+    const visibleText = await this.page.locator('body').textContent().catch(() => 'No se pudo leer texto');
+    const hasSpinner = await this.page.locator('.MuiCircularProgress-root, .MuiLoadingButton-loading').isVisible().catch(() => false);
+
+    await this.page.screenshot({
+      path: 'test-results/login-diagnostico.png',
+      fullPage: true,
+    });
+
     throw new Error(
-      'No apareció el formulario OTP ni mensaje de error. ' +
-      'Verifica credenciales y estado del servidor.'
+      `Login: No apareció OTP ni error después de 15s.\n` +
+      `URL: ${url}\n` +
+      `Spinner activo: ${hasSpinner}\n` +
+      `Texto visible (primeros 300 chars): ${(visibleText ?? '').slice(0, 300)}\n` +
+      `Screenshot: test-results/login-diagnostico.png\n` +
+      `Posibles causas: credenciales incorrectas, servidor lento, o UI cambió.`
     );
   }
 

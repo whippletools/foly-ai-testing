@@ -1,6 +1,7 @@
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/login.page';
 import { DashboardPage } from '../pages/dashboard.page';
+import { PedidosPage } from '../pages/pedidos.page';
 
 /**
  * Fixtures personalizadas que extienden el test base de Playwright.
@@ -16,6 +17,7 @@ import { DashboardPage } from '../pages/dashboard.page';
 export type TestFixtures = {
   loginPage: LoginPage;
   dashboardPage: DashboardPage;
+  pedidosPage: PedidosPage;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -27,6 +29,11 @@ export const test = base.extend<TestFixtures>({
   /* Inyecta DashboardPage automáticamente en cada test */
   dashboardPage: async ({ page }, use) => {
     await use(new DashboardPage(page));
+  },
+
+  /* Inyecta PedidosPage automáticamente en cada test */
+  pedidosPage: async ({ page }, use) => {
+    await use(new PedidosPage(page));
   },
 });
 

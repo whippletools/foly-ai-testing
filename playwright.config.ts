@@ -60,18 +60,7 @@ export default defineConfig({
   },
 
   projects: [
-    /*
-     * Proyecto setup: ejecuta login una vez y guarda el estado de sesión.
-     * Todos los demás proyectos dependen de este para reutilizar la autenticación.
-     */
-    {
-      name: 'setup',
-      testMatch: /.*\.setup\.ts/,
-      use: {
-        ...devices['Desktop Chrome'],
-      },
-    },
-    /* Tests funcionales en Chromium */
+    /* Tests funcionales en Chromium (primero para UI mode) */
     {
       name: 'chromium',
       use: {
@@ -97,6 +86,17 @@ export default defineConfig({
         storageState: 'playwright/.auth/user.json',
       },
       dependencies: ['setup'],
+    },
+    /*
+     * Proyecto setup: ejecuta login una vez y guarda el estado de sesión.
+     * Puesto al final para que no sea el default en UI mode.
+     */
+    {
+      name: 'setup',
+      testMatch: /.*\.setup\.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+      },
     },
   ],
 });
