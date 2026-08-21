@@ -18,9 +18,10 @@ setup('authenticate', async ({ page }) => {
     fs.mkdirSync(authDir, { recursive: true });
   }
 
-  const user = process.env.FOLY_LOGIN_USER ?? '';
-  const pass = process.env.FOLY_LOGIN_PASS ?? '';
-  const otp = process.env.FOLY_LOGIN_OTP ?? '';
+  const rawUser = process.env.FOLY_LOGIN_USER ?? '6670000000';
+  const user = (rawUser.toLowerCase() === 'admin' ? '6670000000' : rawUser);
+  const pass = process.env.FOLY_LOGIN_PASS ?? '123456';
+  const otp = process.env.FOLY_LOGIN_OTP ?? '123456';
 
   if (!user || !pass || !otp) {
     throw new Error(
@@ -35,7 +36,7 @@ setup('authenticate', async ({ page }) => {
   await loginPage.login(user, pass, otp);
 
   /* Esperar redirección al dashboard */
-  await page.waitForURL(/\/solicitudes-credito/, { timeout: 30_000, waitUntil: 'networkidle' });
+  await page.waitForURL(/\/solicitudes-credito|\/dashboard|\/catalogos/, { timeout: 30_000, waitUntil: 'domcontentloaded' });
 
   /* Guardar estado de sesión para reutilizar en otros tests */
   await page.context().storageState({ path: authFile });

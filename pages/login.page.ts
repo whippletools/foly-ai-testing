@@ -45,7 +45,7 @@ export class LoginPage {
    * Navega a /login y espera a que la red se estabilice.
    */
   async goto(): Promise<void> {
-    await this.page.goto('/login', { waitUntil: 'networkidle' });
+    await this.page.goto('/login', { waitUntil: 'domcontentloaded' });
   }
 
   /**
