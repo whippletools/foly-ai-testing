@@ -1,126 +1,122 @@
-# Flujo: Catálogos - Proveedores de reparaciones
+# Manual de Usuario: Proveedores de Reparaciones
 
-## Fecha: 2026-08-10
-## Módulo: Catálogos > Proveedores de reparaciones
-## URL: /catalogos/proveedores-reparaciones
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Proveedores de reparaciones** permite gestionar a los proveedores externos encargados de realizar reparaciones y servicios técnicos sobre productos del inventario. Cada proveedor puede estar asociado a uno o más departamentos, lo que facilita su asignación según el tipo de artículo que requiera reparación.
+**Módulo:** Catálogos > Proveedores de reparaciones  
+**Acceso en ERP:** Menú lateral > Catálogos > Proveedores de reparaciones (`/catalogos/proveedores-reparaciones`)  
+**Dirigido a:** Administradores, Encargados de Garantías, Servicio Postventa y Almacén  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión como Administrador
-2. En el menú lateral, hacer clic en **Catálogos** (se expande)
-3. Hacer clic en **Proveedores de reparaciones**
-4. URL resultante: `/catalogos/proveedores-reparaciones`
+El módulo de **Proveedores de reparaciones** administra el directorio de talleres externos, técnicos y ebanistas especializados autorizados por **Foly Muebles** para atender garantías, restauraciones y servicios técnicos de artículos dañados o con defectos de fábrica.
 
-### Nota importante:
-- El acceso requiere navegación por sidebar con sesión activa.
-- El usuario debe contar con permisos de Administrador para visualizar y gestionar proveedores de reparaciones.
+A través de este catálogo se gestionan:
+- **Directorio de Técnicos y Talleres:** Datos fiscales, teléfonos, correos y personas de contacto.
+- **Especialidad por Departamentos:** Asignación de categorías que cada taller puede intervenir (*Carpintería/Muebles, Tapicería/Salas, Electrónica/Línea Blanca, etc.*).
+- **Control de Carga y Horas:** Monitoreo de horas de trabajo invertidas en reparaciones durante el mes.
+- **Configuración de Ajustes:** Parámetros globales del flujo de servicio y costos por hora.
 
 ---
 
-## 3. Elementos de la UI Identificados
+## 2. Pantalla Principal y Listado de Proveedores
 
-### Header
-- **Título**: "Proveedores de reparaciones" (h1)
-- **Tabs**:
-  - **Proveedores (3)**: Listado de proveedores
-  - **Ajustes**: Configuración adicional del módulo
-- **Buscador**: Campo de texto con placeholder "Buscar"
-- **Botón "+ Nuevo"**: Azul, arriba a la derecha. Crea un nuevo proveedor de reparaciones.
+Al ingresar al módulo, se presenta la tabla general con todos los talleres registrados:
 
-### Tabla de Proveedores de reparaciones
-| Columna | Descripción |
-|---------|-------------|
-| **ID** | Código numérico del proveedor (ej. 0001, 0002, 0003) |
-| **Nombre** | Nombre del proveedor o taller de reparación |
-| **Horas este mes** | Total de horas registradas en el mes actual |
-| **Departamentos** | Departamentos a los que está asignado el proveedor |
+![Pantalla Principal - Proveedores de Reparaciones](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-listado-proveedores.png)
 
-### Proveedores de ejemplo (datos reales):
-
-| ID | Nombre | Horas este mes | Departamentos |
-|----|--------|----------------|---------------|
-| 0001 | Ebanista Armendariz | 0 | Muebles, Sofás, Recámaras, Sala (+2) |
-| 0003 | Servicio Técnico Hogar | 0 | Electrodomésticos, Colchones |
-| 0002 | Tapicería Juventud | 0 | Sofás, Muebles, Sillas |
+### Columnas de la Tabla:
+| Columna | Descripción | Ejemplo Real |
+|---------|-------------|--------------|
+| **ID** | Identificador numérico único de 4 dígitos. | `0001`, `0002`, `0003` |
+| **Nombre** | Razón social o nombre comercial del taller técnico. | `Ebanista Armendariz`, `Tapicería Juventud` |
+| **Horas este mes** | Contador acumulado de horas de servicio técnico reportadas. | `0` hrs |
+| **Departamentos** | Categorías de producto que el taller está autorizado a reparar. | *Muebles, Sofás, Recámaras (+2)* |
+| **Acciones** | Menú desplegable para editar o eliminar el registro. | `⋮` |
 
 ---
 
-## 4. Flujo Principal: Crear Nuevo Proveedor de Reparaciones
+## 3. Búsqueda y Pestañas Principales
 
-### Paso 1: Navegar a Catálogos > Proveedores de reparaciones
-- Iniciar sesión como Administrador
-- Clic en Catálogos en sidebar → Clic en Proveedores de reparaciones
-- Verificar título "Proveedores de reparaciones" visible
-- Verificar tabla con proveedores cargados
+La cabecera del módulo organiza la gestión en dos áreas principales:
 
-### Paso 2: Clic en botón "+ Nuevo"
-- Botón azul superior derecha
-- Se abre el formulario de creación de proveedor de reparaciones
+```
+[Proveedores (N)]  |  [Ajustes]
+```
 
-### Paso 3: Llenar formulario "Nuevo proveedor de reparaciones"
+### 3.1 Búsqueda Dinámica
+El buscador permite filtrar técnicos en tiempo real por nombre, teléfono o especialidad:
 
-El formulario se abre como un modal lateral con el título **"Nuevo proveedor de reparaciones"**.
-
-#### Botón del formulario:
-- **Guardar cambios**: Guarda el nuevo proveedor de reparaciones
-
-#### Campos del formulario:
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| **Nombre del proveedor** | Input | Sí | Nombre del taller o proveedor de reparaciones |
-| **Persona de contacto** | Input | No | Nombre de la persona de contacto |
-| **Número de teléfono** | Input | No | Teléfono del proveedor |
-| **Correo electrónico** | Input | No | Correo electrónico del proveedor |
-| **Departamentos que pueden atender** | Dropdown + Buscador | Sí | Selección de uno o varios departamentos |
-
-#### Departamentos disponibles para asignar:
-- Cocinas
-- Colchones
-- Comedor
-- Electrodomésticos
-- Muebles
-- Muebles
-- Oficina
-- Recámaras
-- Sala
-- Sillas
-- Sofás
-
-### Paso 4: Guardar y verificar
-- Clic en **Guardar cambios**
-- El proveedor aparece en la tabla con los datos correspondientes
+![Búsqueda Dinámica](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/GgI02-busqueda-filtrada.png)
 
 ---
 
-## 5. Flujo Secundario: Buscar Proveedor de Reparaciones
+### 3.2 Pestaña de Ajustes del Módulo
+La pestaña **Ajustes** permite configurar parámetros generales de facturación técnica y tiempos de respuesta:
 
-### Paso 1: Navegar a Catálogos > Proveedores de reparaciones
-
-### Paso 2: Usar campo de búsqueda
-- Escribir nombre o ID del proveedor
-- Presionar Enter o esperar resultados
-
-### Paso 3: Verificar resultados
-- Tabla filtrada con proveedores coincidentes
+![Pestaña Ajustes](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-tab-ajustes.png)
 
 ---
 
-## 6. Consideraciones Importantes
+## 4. Paso a Paso: Cómo Registrar un Nuevo Proveedor de Reparaciones
 
-- Cada proveedor de reparaciones puede estar asignado a **varios departamentos**, visualizados como chips o badges.
-- La columna **Horas este mes** permite controlar la carga de trabajo mensual de cada proveedor.
-- El módulo cuenta con una pestaña de **Ajustes** para configurar parámetros adicionales.
-- Los proveedores de reparaciones son distintos a los proveedores de productos; este módulo es específico para servicios de reparación y mantenimiento.
+### Paso 1: Abrir el formulario de registro
+Haz clic en el botón azul **"Nuevo"** en la esquina superior derecha:
+
+![Modal Nuevo Proveedor](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/04-modal-nuevo-proveedor.png)
+
+### Paso 2: Completar la Información de Contacto
+1. **Nombre del proveedor (\*):** Nombre comercial o razón social del taller (ej. *Servicio Técnico Hogar*).
+2. **Persona de contacto:** Nombre del técnico titular o encargado de recepción.
+3. **Número de teléfono (\*):** Teléfono directo a 10 dígitos para asignación de órdenes de servicio.
+4. **Correo electrónico:** Email para envío de órdenes de compra de servicios y cotizaciones.
+
+### Paso 3: Asignar Departamentos que Puede Atender
+Haz clic en el campo **"Departamentos que puede atender"** para seleccionar las categorías en las que el taller está certificado:
+
+![Selector de Departamentos](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/05-selector-departamentos-abierto.png)
+
+- Marca las casillas de los departamentos correspondientes (*Electrodomésticos, Colchones, Muebles, etc.*).
+
+### Paso 4: Guardar
+Haz clic en **"Guardar cambios"**. El taller quedará disponible de inmediato en el módulo de **Atención a Cliente / Garantías**.
 
 ---
+
+## 5. Menú de Acciones y Modificaciones
+
+Al final de cada fila, presiona el botón de tres puntos (`⋮`):
+
+![Menú de Acciones](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/06-menu-acciones-abierto.png)
+
+```
+[ ⋮ ]
+ ├── 1. Editar
+ └── 2. Eliminar
+```
+
+---
+
+### 5.1 Opción 1: Editar Proveedor
+Permite actualizar teléfonos de contacto, agregar nuevos departamentos atendidos o modificar datos fiscales:
+
+![Modal Editar Proveedor](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/07-modal-editar-proveedor.png)
+
+---
+
+### 5.2 Opción 2: Eliminar Proveedor
+Para dar de baja un proveedor que ya no presta servicios, confirma la acción en la ventana de advertencia:
+
+![Diálogo Confirmar Eliminación](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/5LW08-dialogo-confirmar-eliminar.png)
+
+---
+
+## 6. Preguntas Frecuentes
+
+### ¿Dónde se visualizan las órdenes de reparación asignadas a estos proveedores?
+> En el módulo principal **Atención a Cliente > Garantías y Reparaciones**, donde al levantar un ticket de servicio se seleccionan los talleres registrados en este catálogo según el departamento del artículo.
+
+### ¿Se pueden asignar varios departamentos a un solo taller?
+> **Sí.** Un proveedor con capacidad multidisciplinaria puede atender simultáneamente *Salas, Comedores y Muebles de Oficina*.
+
+### ¿Por qué el contador "Horas este mes" inicia en 0?
+> Se calcula de manera automática a partir de las horas de mano de obra registradas en los servicios técnicos concluidos dentro del mes calendario en curso.
