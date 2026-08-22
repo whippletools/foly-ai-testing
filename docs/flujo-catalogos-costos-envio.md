@@ -1,90 +1,81 @@
-# Flujo: Catálogos - Costos de envío
+# Manual de Usuario: Catálogo de Costos de Envío y Fletes
 
-## Fecha: 2026-08-10
-## Módulo: Catálogos > Costos de envío
-## URL: /catalogos/costos-envio
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Costos de envío** permite configurar los costos de envío por ciudad. Mediante un dropdown se selecciona la ciudad a configurar, y en el panel derecho se visualiza un mapa interactivo para delimitar las zonas de cobertura y asignar costos de envío por zona. No utiliza un listado tradicional con tabla; su funcionamiento se basa en la selección de una ciudad y la edición de zonas directamente sobre el mapa.
+**Módulo:** Catálogos > Costos de envío  
+**Acceso en ERP:** Menú lateral > Catálogos > Costos de envío (`/catalogos/costos-envio`)  
+**Dirigido a:** Logística, Embarques, Ventas, Gerentes de Sucursal y Atención a Clientes  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión como Administrador
-2. En el menú lateral, hacer clic en **Catálogos** (se expande)
-3. Hacer clic en **Costos de envío**
-4. URL resultante: `/catalogos/costos-envio`
+El módulo de **Costos de envío** administra las tarifas de flete y entrega a domicilio de **Foly Muebles**. Permite definir precios por municipio, diferenciar entre entregas urbanas locales y entregas foráneas, y delimitar visualmente polígonos de cobertura sobre un mapa satelital.
 
-### Nota importante:
-- El acceso requiere navegación por sidebar con sesión activa.
-- El usuario debe contar con permisos de Administrador para configurar costos de envío.
+A través de esta herramienta se configuran:
+- **Tarifas Dentro de Zona:** Costo de entrega estándar o gratuita (`$0.00`) para domicilios ubicados dentro del perímetro urbano de la tienda.
+- **Tarifas Fuera de Zona:** Costo de flete adicional para entregas foráneas, ejidos o colonias periféricas.
+- **Georreferenciación en Mapa Satelital:** Herramienta interactiva de Google Maps para trazar polígonos de reparto con precisión geográfica.
+- **Cálculo Automático en Pedidos:** Al ingresar la dirección del cliente en una venta o solicitud de crédito, el ERP calcula el flete aplicable automáticamente.
 
 ---
 
-## 3. Elementos de la UI Identificados
+## 2. Pantalla Principal y Selección de Ciudad
 
-### Header
-- **Título**: "Costos de envío" (h1)
-- **Botón "Guardar cambios"**: Arriba a la derecha, gris/deshabilitado hasta que se realicen modificaciones.
+Al ingresar a **Catálogos > Costos de envío**, el panel solicita seleccionar el municipio a configurar:
 
-### Panel izquierdo: Configuración de ciudad
-- **Dropdown "Ciudad"**: Selector para elegir la ciudad a configurar
-- **Mensaje informativo**: "Selecciona una ciudad para cargar o crear su configuración de costos de envío."
-
-### Panel derecho: Mapa de zonas
-- **Mensaje inicial**: "Selecciona una ciudad para visualizar y editar sus zonas en el mapa."
-- El panel muestra un **mapa interactivo** una vez seleccionada la ciudad.
-- Permite visualizar y editar las zonas de cobertura y sus costos de envío asociados.
+![Pantalla Principal - Selección de Ciudad](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-pantalla-inicial-seleccion-ciudad.png)
 
 ---
 
-## 4. Flujo Principal: Configurar Costos de Envío por Ciudad
+## 3. Búsqueda y Selección de Municipio
 
-### Paso 1: Navegar a Catálogos > Costos de envío
-- Iniciar sesión como Administrador
-- Clic en Catálogos en sidebar → Clic en Costos de envío
-- Verificar título "Costos de envío" visible
+En el campo **"Buscar municipio..."**, escribe el nombre de la ciudad o estado (ej. *Tampico*, *Altamira*, *Pánuco*, *Coatzacoalcos*):
 
-### Paso 2: Seleccionar una ciudad
-- Abrir el dropdown **"Ciudad"**
-- Seleccionar la ciudad deseada de la lista
-- El panel derecho carga el mapa con las zonas de esa ciudad
-
-### Paso 3: Visualizar y editar zonas en el mapa
-- El mapa muestra las zonas de cobertura de la ciudad seleccionada
-- Cada zona puede tener un costo de envío asignado
-- Editar las zonas directamente sobre el mapa (agregar, modificar o eliminar zonas)
-
-### Paso 4: Guardar cambios
-- Clic en **Guardar cambios** (se activa cuando hay modificaciones)
-- La configuración se guarda para la ciudad seleccionada
+![Buscador de Municipios](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/02-buscador-autocompletado-ciudad.png)
 
 ---
 
-## 5. Flujo Secundario: Cambiar de Ciudad
+## 4. Configuración de Tarifas y Delimitación de Zonas
 
-### Paso 1: Navegar a Catálogos > Costos de envío
+Una vez seleccionado el municipio (ej. *Tampico (Tamaulipas)*), se cargan las tarifas y el mapa de cobertura:
 
-### Paso 2: Seleccionar otra ciudad
-- Abrir el dropdown **"Ciudad"**
-- Seleccionar otra ciudad
-- El mapa se actualiza con las zonas de la nueva ciudad
+![Mapa y Tarifas de Municipio](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-mapa-y-tarifas-municipio.png)
+
+### 4.1 Campos de Tarifas de Envío:
+| Parámetro | Descripción | Ejemplo de Configuración |
+|-----------|-------------|--------------------------|
+| **Costo dentro de zona ($)** | Tarifa para domicilios dentro del polígono urbano. | `$0.00` (Envío gratis) o `$150.00` |
+| **Costo fuera de zona ($)** | Tarifa para direcciones fuera del polígono trazado. | `$450.00` o `$600.00` |
+
+---
+
+### 4.2 Edición de Montos en Pesos
+Captura los importes correspondientes según la política de fletes vigente:
+
+![Edición de Tarifas](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/04-edicion-tarifas-dentro-fuera-zona.png)
 
 ---
 
-## 6. Consideraciones Importantes
+### 4.3 Trazado de Nuevas Zonas de Cobertura en el Mapa
+Presiona el botón **"Nueva"** para trazar un nuevo polígono de reparto sobre el mapa satelital:
 
-- Este módulo **no utiliza un listado tradicional** con tabla ni botón "Nuevo".
-- La configuración se realiza **ciudad por ciudad** mediante el dropdown.
-- El **mapa interactivo** es el medio principal para definir zonas de cobertura y costos.
-- El botón **"Guardar cambios"** solo se habilita cuando se detectan modificaciones en la configuración.
-- Las zonas previamente configuradas en el módulo **Zonas** pueden utilizarse como base para la delimitación geográfica.
-- Los cambios no guardados se perderán al cambiar de ciudad si no se presiona **Guardar cambios** antes.
+![Trazado de Cobertura en Mapa](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/05-trazado-nueva-zona-mapa.png)
+
+- Haz clic en los diferentes puntos del mapa para delimitar las colonias y avenidas que componen el perímetro de entrega.
 
 ---
+
+### Paso Final: Guardar Cambios
+Haz clic en el botón azul **"Guardar cambios"** en la esquina superior derecha. Las tarifas se aplicarán de inmediato en el cotizador de ventas y en la logística de rutas.
+
+---
+
+## 5. Preguntas Frecuentes
+
+### ¿Cómo sabe el sistema si una entrega es "dentro" o "fuera" de zona?
+> Al capturar el Código Postal y las coordenadas GPS del domicilio del cliente en el módulo de **Ventas** o **Clientes**, el ERP valida si el punto geográfico cae dentro del polígono trazado en este mapa.
+
+### ¿Se pueden configurar envíos gratuitos a partir de cierto monto de compra?
+> Las promociones de *Envío Gratis* se configuran en **Catálogos > Promociones** vinculadas a este tabulador de fletes.
+
+### ¿Qué sucede si un municipio no tiene zonas trazadas?
+> El sistema cobrará la tarifa predeterminada de *Costo fuera de zona* para todas las entregas dirigidas a esa localidad.
