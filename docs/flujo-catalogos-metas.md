@@ -1,93 +1,80 @@
-# Flujo: Catálogos - Metas
+# Manual de Usuario: Catálogo de Metas Comerciales
 
-## Fecha: 2026-08-10
-## Módulo: Catálogos > Metas
-## URL: /catalogos/metas
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Metas** permite visualizar y configurar las metas de ventas por sucursal. Muestra un historial de ventas en gráfico comparativo (metas vs ventas reales) y permite consultar la meta mensual configurada para cada sucursal. El monto total de la meta mensual está conformado por la meta individual de cada vendedor asignado.
+**Módulo:** Catálogos > Metas  
+**Acceso en ERP:** Menú lateral > Catálogos > Metas (`/catalogos/metas`)  
+**Dirigido a:** Dirección Comercial, Gerencia General, Gerentes de Sucursal y Supervisores de Ventas  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión como Administrador
-2. En el menú lateral, hacer clic en **Catálogos** (se expande)
-3. Hacer clic en **Metas**
-4. URL resultante: `/catalogos/metas`
+El módulo de **Metas** es el centro de planeación y control de objetivos comerciales de **Foly Muebles**. Permite fijar las cuotas mensuales de venta y colocación de crédito para cada una de las sucursales y puntos de venta de la cadena.
 
-### Nota importante:
-- El acceso requiere navegación por sidebar con sesión activa.
-- El usuario debe contar con permisos de Administrador para visualizar y gestionar metas.
+A través de esta matriz se configuran los 4 indicadores clave de rendimiento (KPIs):
+- **Número de Créditos:** Meta de colocación de solicitudes de crédito aprobadas por tienda.
+- **Nuevos Créditos:** Meta de captación de clientes nuevos sin historial previo en Foly.
+- **Meta Cotizaciones:** Meta de prospectos registrados y cotizaciones comerciales generadas.
+- **Meta Mensual ($):** Monto total en pesos mexicanos que la sucursal debe facturar en el mes.
 
 ---
 
-## 3. Elementos de la UI Identificados
+## 2. Pantalla Principal y Matriz de Objetivos
 
-### Header
-- **Título**: "Metas" (h1)
-- **Subtítulo**: "Configura las metas por sucursal"
+Al ingresar a **Catálogos > Metas**, se despliega la matriz consolidada de sucursales:
 
-### Gráfico: Historial de ventas
-- **Tab activo**: **Ventas** (botón azul)
-- **Tipo de gráfico**: Gráfico de líneas comparativo
-- **Eje X**: Meses (Feb, Abr, Jun, Ago, Oct, Dic, Feb, Abr, Jun, Ago) con año correspondiente
-- **Eje Y**: Monto de ventas (escala de 0 a 4)
-- **Leyenda**:
-  - **Metas** (línea roja)
-  - **Ventas** (línea azul)
-- Los montos mensuales se muestran como `$0.00` en todos los periodos visibles
+![Pantalla Principal - Matriz de Metas](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-matriz-metas-general.png)
 
-### Sección de Meta Mensual
-- **Selector de mes**: Muestra el mes actual con flechas **< >** para navegar entre meses
-- Ejemplo visible: **Agosto 2026**
-- **Descripción**: "El monto total de la meta mensual para esta sucursal está conformado por la meta individual de cada vendedor asignado."
-- **Monto total**: `$0.00`
+### Columnas de la Matriz de Metas:
+| Columna | Descripción | Ejemplo de Configuración |
+|---------|-------------|--------------------------|
+| **Sucursal** | Nombre oficial de la tienda física. | `Foly Muebles Altamira`, `Foly Muebles Tampico Centro` |
+| **Num. Créditos** | Cantidad objetivo de créditos colocados en el mes. | `50` |
+| **Nuevos créditos** | Cantidad objetivo de nuevos clientes financiados. | `30` |
+| **Meta cotizaciones** | Total de cotizaciones y prospectos proyectados. | `120` |
+| **Meta mensual** | Monto objetivo de venta neta en pesos mexicanos. | `$1,500,000.00` |
 
 ---
 
-## 4. Flujo Principal: Consultar Metas por Sucursal
+## 3. Paso a Paso: Cómo Configurar y Guardar las Metas del Mes
 
-### Paso 1: Navegar a Catálogos > Metas
-- Iniciar sesión como Administrador
-- Clic en Catálogos en sidebar → Clic en Metas
-- Verificar título "Metas" visible
+### Paso 1: Ingresar a la matriz
+Dirígete a **Catálogos > Metas**. El sistema cargará automáticamente el mes operativo actual (ej. *Agosto*).
 
-### Paso 2: Visualizar el historial de ventas
-- El gráfico muestra automáticamente el historial comparativo de metas vs ventas
-- Usar el tab **Ventas** para ver el gráfico correspondiente
+### Paso 2: Capturar los Valores por Sucursal
+Haz clic directamente sobre las casillas de cada sucursal e ingresa las cuotas asignadas:
 
-### Paso 3: Consultar meta del mes actual
-- La sección inferior muestra la meta configurada para el mes en curso
-- Ejemplo: "Agosto 2026" con monto total `$0.00`
+![Edición de Metas por Tienda](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/02-edicion-metas-sucursal.png)
 
-### Paso 4: Navegar entre meses
-- Usar las flechas **< >** para cambiar al mes anterior o siguiente
-- El monto de la meta se actualiza según el mes seleccionado
+1. En **Num. Créditos**, escribe la cantidad de créditos esperados.
+2. En **Nuevos créditos**, define el objetivo de prospección.
+3. En **Meta cotizaciones**, ingresa el volumen de cotizaciones.
+4. En **Meta mensual**, captura el importe de venta en moneda nacional.
 
----
-
-## 5. Flujo Secundario: Cambiar de Sucursal
-
-### Paso 1: Navegar a Catálogos > Metas
-
-### Paso 2: Seleccionar otra sucursal
-- (Dependiendo de la configuración del sistema, puede haber un selector de sucursal)
-- El gráfico y la meta mensual se actualizan para la sucursal seleccionada
+### Paso 3: Guardar Cambios
+Haz clic en el botón azul **"Guardar"** en la barra superior. Los objetivos se actualizarán de inmediato en los dashboards gerenciales y en las comisiones de los vendedores.
 
 ---
 
-## 6. Consideraciones Importantes
+## 4. Herramientas y Reportes
 
-- El módulo **Metas** no utiliza un botón "Nuevo" tradicional; la configuración de metas puede realizarse desde otro flujo o estar integrada con la gestión de vendedores.
-- La meta mensual total se calcula automáticamente como la **suma de las metas individuales de cada vendedor asignado** a la sucursal.
-- El gráfico permite comparar visualmente el desempeño de ventas contra las metas establecidas.
-- Los montos se expresan en la moneda configurada del sistema (pesos mexicanos).
-- Si no hay metas configuradas, el monto mostrado será `$0.00`.
+En la cabecera superior se encuentran las herramientas de control:
+
+```
+[ Mes actual ]  |  [ Descargar reporte ]  |  [ Guardar ]
+```
+
+- **Descargar reporte:** Genera un archivo con el consolidado de metas vs avance real por tienda para juntas de resultados.
+- **Pestaña Ventas / Crédito:** Permite alternar la visualización entre metas de facturación de contado y metas de colocación financiera.
 
 ---
+
+## 5. Preguntas Frecuentes
+
+### ¿Cómo se distribuye la "Meta mensual" entre los vendedores de una tienda?
+> La meta total de la sucursal es el parámetro maestro. En el módulo de **Catálogos > Vendedores**, se puede desglosar la cuota individual correspondiente a cada vendedor asignado a la tienda.
+
+### ¿Qué pasa si una sucursal supera su meta mensual?
+> Los dashboards de **Ventas** reflejarán un porcentaje de cumplimiento superior al 100% y se aplicarán los esquemas de bonos y comisiones configurados en el ERP.
+
+### ¿Se pueden consultar las metas de meses anteriores?
+> **Sí.** Utiliza el selector de período en la cabecera para revisar el histórico y comparar el crecimiento año contra año.
