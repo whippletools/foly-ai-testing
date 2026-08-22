@@ -1,124 +1,101 @@
-# Flujo: Catálogos - Mensajes
+# Manual de Usuario: Catálogo de Mensajes y Plantillas
 
-## Fecha: 2026-08-10
-## Módulo: Catálogos > Mensajes
-## URL: /catalogos/mensajes
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Mensajes** permite gestionar los mensajes predeterminados o plantillas que se envían a los clientes. Cada mensaje registra un nombre, el contenido del mensaje y un estatus que indica si está en uso o no. Se utiliza para automatizar comunicaciones como recordatorios de pago, advertencias judiciales, agradecimientos y promociones.
+**Módulo:** Catálogos > Mensajes  
+**Acceso en ERP:** Menú lateral > Catálogos > Mensajes (`/catalogos/mensajes`)  
+**Dirigido a:** Crédito y Cobranza, Atención a Clientes, Mercadotecnia y Administración  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión como Administrador
-2. En el menú lateral, hacer clic en **Catálogos** (se expande)
-3. Hacer clic en **Mensajes**
-4. URL resultante: `/catalogos/mensajes`
+El módulo de **Mensajes** administra la biblioteca oficial de **plantillas dinámicas de comunicación** de **Foly Muebles**. Permite estandarizar los textos que se envían por SMS, WhatsApp y Correo Electrónico a los clientes en diferentes etapas de su crédito y compras.
 
-### Nota importante:
-- El acceso requiere navegación por sidebar con sesión activa.
-- El usuario debe contar con permisos de Administrador para visualizar y gestionar mensajes.
+A través de este catálogo se controlan:
+- **Recordatorios Preventivos de Pago:** Avisos previos al vencimiento semanal o quincenal de letras.
+- **Alertas de Cobranza y Mora:** Notificaciones de atraso, avisos extrajudiciales y notificaciones de cobranza judicial.
+- **Agradecimientos de Pago:** Confirmaciones automáticas de abono exitoso tras acudir a caja o pagar por transferencia.
+- **Variables Dinámicas Inteligentes:** Personalización automática del mensaje sustituyendo variables como nombre del cliente, número de factura, fecha límite y saldo pendiente.
 
 ---
 
-## 3. Elementos de la UI Identificados
+## 2. Pantalla Principal y Directorio de Plantillas
 
-### Header
-- **Título**: "Mensajes" (h1)
-- **Buscador**: Campo de texto con placeholder "Buscar"
-- **Botón "Nuevo"**: Azul, arriba a la derecha. Crea un nuevo mensaje.
+Al ingresar a **Catálogos > Mensajes**, se muestra el catálogo de plantillas activas:
 
-### Tabla de Mensajes
-| Columna | Descripción |
-|---------|-------------|
-| **ID** | Código numérico del mensaje (ej. 01, 02, 03) |
-| **Nombre** | Nombre descriptivo del mensaje (ej. "Email de recordatorio 1 semana") |
-| **Mensaje** | Contenido del mensaje (truncado en la tabla) |
-| **Estatus** | Estado del mensaje (En uso / Sin uso) |
+![Pantalla Principal - Catálogo de Mensajes](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-listado-mensajes.png)
 
-### Mensajes de ejemplo (datos reales):
-
-| ID | Nombre | Mensaje | Estatus |
-|----|--------|---------|---------|
-| 03 | Email de recordatorio 1 semana | Esta es tu recordatorio semanal: Tu próximo pago vence... | En uso |
-| 04 | Mensaje advertencia judicial | No hemos recibido el pago correspondiente a *factura_... | En uso |
-| 07 | Mensaje de agradecimiento | ¡Gracias por tu pago! Tu cuenta ha sido actualizada corr... | En uso |
-| 02 | Mensaje de invitación de pago | ¡Hola! Te invitamos a realizar tu pago el día de hoy por c... | En uso |
-| 05 | Mensaje Notificación cobranza judicial | Tu cuenta presenta mora prolongada. Este mensaje es u... | En uso |
-| 09 | Mensaje promoción pago anticipado | ¡Aprovecha! Si realizas tu pago antes del *fecha_limite* ... | Sin uso |
-| 01 | Mensaje recordatorio de pago | ¡Hola! Te recordamos que la fecha límite de pago es el p... | En uso |
-| 10 | Mensaje recordatorio semanal | Esta es tu recordatorio semanal: Tu próximo pago vence... | Sin uso |
-| 11 | Recordatorio de pago | Te recordamos que tienes un pago pendiente. Comunic... | En uso |
-| 12 | Recordatorio de pago WhatsApp | Hola, te compartimos un recordatorio de tu pago pendie... | Sin uso |
+### Columnas de la Tabla:
+| Columna | Descripción | Ejemplo Real en Sistema |
+|---------|-------------|-------------------------|
+| **ID** | Código numérico de 2 dígitos. | `01`, `02`, `03`, `04`, `07` |
+| **Nombre** | Título descriptivo o propósito del mensaje. | `Email de recordatorio 1 semana`, `Mensaje advertencia judicial`, `Mensaje de agradecimiento` |
+| **Mensaje** | Texto completo con las etiquetas de personalización. | *"Esta es tu recordatorio semanal: Tu próximo pago vence el \*fecha_limite\*. Monto pendiente: \*monto_pendiente\*."* |
+| **Estatus** | Estado operativo de la plantilla. | Badge azul (*En uso*) |
+| **Acciones** | Menú desplegable para editar o eliminar. | `⋮` |
 
 ---
 
-## 4. Flujo Principal: Crear Nuevo Mensaje
+## 3. Búsqueda en Tiempo Real
 
-### Paso 1: Navegar a Catálogos > Mensajes
-- Iniciar sesión como Administrador
-- Clic en Catálogos en sidebar → Clic en Mensajes
-- Verificar título "Mensajes" visible
-- Verificar tabla con mensajes cargados
+Utiliza el campo de texto **"Buscar"** para localizar plantillas por nombre o palabras clave dentro del contenido:
 
-### Paso 2: Clic en botón "Nuevo"
-- Botón azul superior derecha
-- Se abre el formulario de creación de mensaje
-
-### Paso 3: Llenar formulario "Nuevo mensaje"
-
-El formulario se abre como un modal lateral con el título **"Nuevo mensaje"**.
-
-#### Botón del formulario:
-- **Guardar**: Guarda el nuevo mensaje
-
-#### Campos del formulario:
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| **Nombre del mensaje** | Input | Sí | Ingresa el nombre del mensaje |
-| **Contenido del mensaje** | Textarea | Sí | Escribe el contenido del mensaje aquí... |
-
-#### Variables disponibles para el mensaje:
-
-El formulario permite insertar datos variables del cliente usando las siguientes etiquetas:
-
-- **\*fecha_limite\*** — Fecha límite de pago
-- **\*num_factura\*** — Número de factura
-- **\*descripcion_factura\*** — Descripción de la factura
-- **\*total_adeudo\*** — Total adeudado
-- **\*proximo_pag\*** — Próximo pago
-
-### Paso 4: Guardar y verificar
-- Clic en **Guardar**
-- El mensaje aparece en la tabla con el estatus correspondiente
+![Búsqueda Dinámica](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/FDg02-busqueda-filtrada.png)
 
 ---
 
-## 5. Flujo Secundario: Buscar Mensaje
+## 4. Paso a Paso: Cómo Crear una Nueva Plantilla
 
-### Paso 1: Navegar a Catálogos > Mensajes
+### Paso 1: Abrir el formulario
+Haz clic en el botón azul **"Nuevo"** en la esquina superior derecha:
 
-### Paso 2: Usar el buscador
-- Escribir el nombre del mensaje en el campo de búsqueda
+![Modal Nuevo Mensaje](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-modal-nuevo-mensaje.png)
 
-### Paso 3: Verificar resultados
-- Tabla filtrada con mensajes coincidentes
+### Paso 2: Configurar los Campos
+1. **Nombre del mensaje (\*):** Asigna un título claro que identifique el propósito (ej. *Recordatorio 3 días antes de vencimiento*).
+2. **Contenido del mensaje (\*):** Redacta el cuerpo de la comunicación e inserta las variables dinámicas del cliente.
+
+### Variables Dinámicas Disponibles:
+Al enviar la notificación, el ERP reemplazará automáticamente los comodines entre asteriscos por la información real del cliente:
+- `*fecha_limite*`: Fecha exacta de vencimiento del próximo abono (ej. *15/09/2026*).
+- `*num_factura*`: Número de folio de la factura o pagaré.
+- `*descripcion_factura*`: Resumen de los artículos adquiridos (ej. *Comedor 6 sillas + Sala Zurich*).
+- `*total_adeudo*`: Saldo total adeudado del crédito.
+- `*proximo_pago*`: Monto exacto de la letra o cuota a pagar.
+- `*monto_pendiente*`: Saldo acumulado vencido.
+
+### Paso 3: Guardar
+Haz clic en **"Guardar"**. La nueva plantilla estará lista de inmediato para ser utilizada en los módulos de **Crédito y Cobranza** y **Atención a Clientes**.
 
 ---
 
-## 6. Consideraciones Importantes
+## 5. Menú de Acciones y Modificación
 
-- Los mensajes pueden tener estatus **"En uso"** o **"Sin uso"**.
-- El estatus **"En uso"** se visualiza con un badge verde.
-- El contenido del mensaje se muestra truncado en la tabla; para verlo completo se debe abrir el mensaje.
-- Las **variables dinámicas** permiten personalizar mensajes automáticos con datos del cliente (fecha límite, número de factura, total adeudado, etc.).
-- Los mensajes se utilizan en módulos de cobranza y notificaciones automáticas.
+Al presionar el botón de tres puntos (`⋮`) en cualquier plantilla:
+
+![Menú de Acciones](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/Yiy04-menu-acciones-abierto.png)
+
+```
+[ ⋮ ]
+ ├── 1. Editar
+ └── 2. Eliminar
+```
 
 ---
+
+### 5.1 Edición de Plantilla
+Permite ajustar la redacción, corregir faltas ortográficas o agregar nuevas variables dinámicas:
+
+![Modal Editar Mensaje](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/05-modal-editar-mensaje.png)
+
+---
+
+## 6. Preguntas Frecuentes
+
+### ¿Dónde se utilizan estas plantillas en la operación diaria?
+> En los módulos de **Solicitudes de crédito**, **Cobranza** y **Atención a clientes**, los gestores pueden presionar el botón de contacto con el cliente y seleccionar cualquiera de estas plantillas predefinidas para enviar el mensaje por WhatsApp o SMS en un solo clic.
+
+### ¿Qué ocurre si un cliente no tiene factura asociada?
+> Las variables como `*num_factura*` se sustituirán por el número de contrato de crédito o folio de venta correspondiente.
+
+### ¿Se pueden crear plantillas promocionales?
+> **Sí.** Puedes dar de alta plantillas como *Invitación a venta nocturna* o *Promoción de aniversario* para campañas masivas a clientes vigentes.
