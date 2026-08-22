@@ -1,96 +1,100 @@
-# Flujo: Catálogos - Folypuntos
+# Manual de Usuario: Catálogo de Folypuntos y Programa de Lealtad
 
-## Fecha: 2026-08-10
-## Módulo: Catálogos > Folypuntos
-## URL: /catalogos/folypuntos
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Folypuntos** permite configurar el programa de lealtad y puntos del negocio. Define la equivalencia entre compras en pesos y Folypuntos otorgados, así como el valor de canje de cada Folypunto a pesos mexicanos. El programa de lealtad puede configurarse de forma diferente según el método de pago: **Contado**, **Crédito** o **Apartado**.
+**Módulo:** Catálogos > Folypuntos  
+**Acceso en ERP:** Menú lateral > Catálogos > Folypuntos (`/catalogos/folypuntos`)  
+**Dirigido a:** Mercadotecnia, Ventas, Finanzas, Crédito y Cobranza y Gerencia General  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión como Administrador
-2. En el menú lateral, hacer clic en **Catálogos** (se expande)
-3. Hacer clic en **Folypuntos**
-4. URL resultante: `/catalogos/folypuntos`
+El módulo de **Folypuntos** administra las reglas y equivalencias monetarias del **Programa de Recompensas y Fidelización** de **Foly Muebles**. Permite premiar a los clientes otorgándoles puntos por sus compras que posteriormente pueden utilizar como dinero en efectivo para pagar enganches, liquidar saldos o comprar nuevos muebles.
 
-### Nota importante:
-- El acceso requiere navegación por sidebar con sesión activa.
-- El usuario debe contar con permisos de Administrador para visualizar y modificar la configuración de Folypuntos.
+A través de este catálogo se parametrizan:
+- **Reglas de Acumulación (Compra a Puntos):** Cuántos pesos gastados generan 1 Folypunto.
+- **Reglas de Canje o Redención (Puntos a Pesos):** Cuánto dinero en moneda nacional vale cada Folypunto al momento de pagar en caja.
+- **Diferenciación por Tipo de Venta:** Reglas independientes para compras de **Contado**, **Crédito** y **Apartado**.
 
 ---
 
-## 3. Elementos de la UI Identificados
+## 2. Pantalla Principal y Pestañas por Tipo de Venta
 
-### Header
-- **Título**: "Configuración de Folypuntos" (h1)
-- **Botón "Guardar"**: Azul, arriba a la derecha. Guarda los cambios de configuración.
+Al ingresar a **Catálogos > Folypuntos**, se presenta el panel de configuración dividido en 3 modalidades de venta:
 
-### Tabs de método de pago
-- **Contado**: Configuración para pagos de contado
-- **Crédito**: Configuración para pagos a crédito
-- **Apartado**: Configuración para apartados
-
-### Sección: Equivalencia de compra a Folypuntos
-- **Descripción**: "Configura la cantidad de Folypuntos que se otorgan por cada peso gastado."
-- **Configuración**: Por cada **$ 10** pesos → **1** Folypunto
-- Controles **+** y **−** para ajustar los valores
-
-### Sección: Equivalencia de venta a Folypuntos
-- **Descripción**: "Configura el valor en pesos que tendrá cada Folypunto al ser canjeado."
-- **Configuración**: 1 Folypunto → **$ 1.00** pesos mexicanos
-- Controles **+** y **−** para ajustar los valores
+```
+[ Pestaña: Contado ]  |  [ Pestaña: Crédito ]  |  [ Pestaña: Apartado ]
+```
 
 ---
 
-## 4. Flujo Principal: Configurar Folypuntos
+### 2.1 Pestaña 1: Configuración para Ventas de Contado
+Configura los puntos otorgados a clientes que liquidan en una sola exhibición (efectivo, tarjeta de débito/crédito, transferencia):
 
-### Paso 1: Navegar a Catálogos > Folypuntos
-- Iniciar sesión como Administrador
-- Clic en Catálogos en sidebar → Clic en Folypuntos
-- Verificar título "Configuración de Folypuntos" visible
-
-### Paso 2: Seleccionar el método de pago a configurar
-- Seleccionar el tab **Contado**, **Crédito** o **Apartado** según corresponda
-
-### Paso 3: Ajustar equivalencia de compra a Folypuntos
-- Usar los controles **+** y **−** para establecer cuántos pesos equivalen a 1 Folypunto
-- Ejemplo: Por cada $10 pesos → 1 Folypunto
-
-### Paso 4: Ajustar equivalencia de venta (canje) a Folypuntos
-- Usar los controles **+** y **−** para establecer el valor de cada Folypunto en pesos mexicanos
-- Ejemplo: 1 Folypunto → $1.00 pesos mexicanos
-
-### Paso 5: Guardar cambios
-- Clic en **Guardar**
-- La configuración se aplica al método de pago seleccionado
+![Folypuntos - Contado](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-folypuntos-tab-contado.png)
 
 ---
 
-## 5. Flujo Secundario: Configurar Otro Método de Pago
+### 2.2 Pestaña 2: Configuración para Ventas a Crédito
+Incentiva la compra a plazos y el pago puntual de abonos:
 
-### Paso 1: Navegar a Catálogos > Folypuntos
-
-### Paso 2: Seleccionar otro tab
-- Clic en **Crédito** o **Apartado**
-- Repetir los pasos 3-5 del flujo principal para configurar el nuevo método de pago
+![Folypuntos - Crédito](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/02-folypuntos-tab-credito.png)
 
 ---
 
-## 6. Consideraciones Importantes
+### 2.3 Pestaña 3: Configuración para Planes de Apartado
+Premia a los clientes que aseguran mercancía mediante sistema de apartado:
 
-- La configuración de Folypuntos es **por método de pago**: Contado, Crédito y Apartado pueden tener reglas diferentes.
-- **Equivalencia de compra**: define cuántos pesos debe gastar el cliente para obtener 1 Folypunto.
-- **Equivalencia de venta (canje)**: define cuánto vale cada Folypunto al momento de canjearlo por descuentos o productos.
-- Los cambios se guardan **por tab**; es necesario guardar cada método de pago por separado.
-- Si no se configura un método de pago, el sistema puede usar valores por defecto o no otorgar puntos para ese método.
-- El programa de lealtad se aplica automáticamente en las ventas según la configuración activa.
+![Folypuntos - Apartado](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-folypuntos-tab-apartado.png)
 
 ---
+
+## 3. Parámetros y Reglas de Equivalencia
+
+En cada pestaña se configuran dos secciones fundamentales:
+
+### Sección A: Equivalencia de Compra a Folypuntos (Generación de Puntos)
+> Define cuántos Folypuntos recibe el cliente en su monedero electrónico por cada peso gastado.
+
+| Campo | Ejemplo | Interpretación |
+|-------|---------|----------------|
+| **Por cada ($)** | `$10.00` | Monto base de compra requerido. |
+| **Folypuntos** | `1` | Cantidad de puntos acreditados al cliente. |
+
+*Ejemplo:* En una compra de `$5,000.00` con factor `$10 = 1 punto`, el cliente acumula **500 Folypuntos**.
+
+---
+
+### Sección B: Equivalencia de Venta a Folypuntos (Canje / Valor del Punto)
+> Define el valor monetario en pesos mexicanos que tiene cada Folypunto al ser utilizado como método de pago.
+
+| Campo | Ejemplo | Interpretación |
+|-------|---------|----------------|
+| **1 Folypunto** | `$1.00` | Cada punto equivale exactamente a $1.00 peso mexicano de descuento directo. |
+
+---
+
+## 4. Paso a Paso: Cómo Modificar y Guardar las Equivalencias
+
+### Paso 1: Seleccionar la Modalidad
+Haz clic en la pestaña correspondiente (**Contado**, **Crédito** o **Apartado**).
+
+### Paso 2: Editar los Factores
+Ingresa los nuevos valores deseados en las casillas:
+
+![Edición de Equivalencias](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/04-edicion-valores-equivalencias.png)
+
+### Paso 3: Guardar Cambios
+Haz clic en el botón azul **"Guardar"** en la esquina superior derecha. Las nuevas equivalencias se aplicarán de inmediato en todas las cajas y módulos de venta de la empresa.
+
+---
+
+## 5. Preguntas Frecuentes
+
+### ¿Dónde consulta el cliente su saldo de Folypuntos?
+> En el ticket de compra impreso en caja, en el portal de clientes y en la ficha del cliente en **Clientes > Consulta**.
+
+### ¿Se pueden pagar compras combinando Folypuntos y Efectivo?
+> **Sí.** En el módulo de **Cajas**, el cajero puede aplicar los Folypuntos disponibles del cliente como pago parcial y liquidar la diferencia con efectivo, tarjeta o crédito.
+
+### ¿Los Folypuntos tienen fecha de caducidad?
+> La vigencia general del monedero electrónico es de 12 meses naturales a partir de la fecha de emisión.
