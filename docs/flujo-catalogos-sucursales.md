@@ -1,134 +1,118 @@
-# Flujo: Catálogos - Sucursales
+# Manual de Usuario: Catálogo de Sucursales
 
-## Fecha: 2026-08-10
-## Módulo: Catálogos > Sucursales
-## URL: /catalogos/sucursales
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Sucursales** permite gestionar las ubicaciones físicas del negocio. Cada sucursal registra su nombre, zona asignada, domicilio completo, estatus y fechas de registro y última actualización. Se utiliza para asociar operaciones, inventarios, ventas y promociones a ubicaciones específicas.
+**Módulo:** Catálogos > Sucursales  
+**Acceso en ERP:** Menú lateral > Catálogos > Sucursales (`/catalogos/sucursales`)  
+**Dirigido a:** Administradores, Gerentes de Tienda, Contabilidad, Logística y Almacén  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión como Administrador
-2. En el menú lateral, hacer clic en **Catálogos** (se expande)
-3. Hacer clic en **Sucursales**
-4. URL resultante: `/catalogos/sucursales`
+El módulo de **Sucursales** administra la infraestructura física y centros de distribución de **Foly Muebles**. Permite dar de alta tiendas comerciales, bodegas de almacenamiento y puntos de entrega, configurando su ubicación geográfica exacta, zona de reparto y domicilio fiscal.
 
-### Nota importante:
-- El acceso requiere navegación por sidebar con sesión activa.
-- El usuario debe contar con permisos de Administrador para visualizar y gestionar sucursales.
+A través de este catálogo se controlan:
+- **Puntos de Venta y Almacenes:** Registro de todas las tiendas de la cadena (*Tampico Centro, Tampico Aeropuerto, Altamira, Coatzacoalcos, Ejército Mexicano, Pánuco, SLP Carranza, SLP Soledad, Veracruz Puerto, Bodega Tampico*).
+- **Asignación Territorial:** Vinculación directa con el catálogo de **Zonas**.
+- **Georreferenciación:** Coordenadas GPS (Latitud y Longitud) y mapa interactivo para optimizar el ruteo de entregas.
+- **Asignación de Personal y Cajas:** Base para autorizar usuarios, vendedores y aperturas de caja en **Catálogos > Usuarios** y **Catálogos > Cajas**.
 
 ---
 
-## 3. Elementos de la UI Identificados
+## 2. Pantalla Principal y Listado de Sucursales
 
-### Header
-- **Título**: "Sucursales" (h1)
-- **Tabs**:
-  - **Todos**: Muestra todas las sucursales
-  - **Activas**: Muestra solo sucursales activas
-  - **Inactivas**: Muestra solo sucursales inactivas
-- **Buscador**: Campo de texto con placeholder "Buscar"
-- **Botón "Nuevo"**: Azul, arriba a la derecha. Crea una nueva sucursal.
+Al ingresar a **Catálogos > Sucursales**, se presenta el directorio maestro de tiendas:
 
-### Tabla de Sucursales
-| Columna | Descripción |
-|---------|-------------|
-| **ID** | Código numérico de la sucursal (ej. 01, 03, 05) |
-| **Nombre** | Nombre comercial de la sucursal |
-| **Zona** | Zona a la que pertenece la sucursal (Zona 1, Zona 2 o Sin zona) |
-| **Domicilio** | Dirección completa de la sucursal |
-| **Estado** | Estado de la sucursal (Activo/Inactivo) |
-| **Fecha registro** | Fecha en que se registró la sucursal |
-| **Últ. actualización** | Fecha de la última actualización de la sucursal |
+![Pantalla Principal - Listado de Sucursales](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-listado-sucursales-real.png)
 
-### Sucursales de ejemplo (datos reales):
-
-| ID | Nombre | Zona | Domicilio | Estado | Fecha registro | Últ. actualización |
-|----|--------|------|-----------|--------|----------------|--------------------|
-| 05 | Foly Muebles Altamira | Zona 1 | Calle Francisco Javier Mina 301, ALTAMIRA CENTRO, Altamira, Tamaulipas, 89600 | Activo | 29/07/2026 | 06/08/2026 |
-| 03 | Foly Muebles Avenida Monterrey | Zona 2 | Avenida Monterrey 313, ENRIQUE CÁRDENAS GONZÁLEZ, Tampico, Tamaulipas, 89309 | Activo | 29/07/2026 | 06/08/2026 |
-| 06 | Foly Muebles Bodega Tampico | Zona 1 | Carretera Tampico Mante Km 12.5 S/N, Tampico, Altamira, Tamaulipas, 89609 | Activo | 29/07/2026 | 06/08/2026 |
-| 11 | Foly Muebles Coatzacoalcos | Zona 2 | Dr. José Lemarray Carrión S/N, PUERTO ESMERALDA, Coatzacoalcos, Veracruz, 96536 | Activo | 29/07/2026 | 06/08/2026 |
-| 04 | Foly Muebles Ejército Mexicano | Zona 1 | Avenida Ejército Mexicano 306, ESFUERZO NACIONAL, Ciudad Madero, Tamaulipas, 89470 | Activo | 29/07/2026 | 06/08/2026 |
-| 09 | Foly Muebles Pánuco | Zona 2 | Boulevard Díaz Mirón 701, PANUCO CENTRO, Pánuco, Veracruz, 93990 | Activo | 29/07/2026 | 06/08/2026 |
-| 07 | Foly Muebles San Luis Potosí Carranza | Sin zona | Carranza S/N, TEQUIQUIAPAN, San Luis Potosí, San Luis Potosí, 78250 | Activo | 29/07/2026 | — |
-| 08 | Foly Muebles San Luis Potosí Soledad | Sin zona | Carretera San Luis - Matehuala S/N, SOLEDAD DE GRACIANO SÁNCHEZ CENTRO, Soledad de Graciano Sánchez, San Luis Potosí, 78430 | Activo | 29/07/2026 | — |
-| 02 | Foly Muebles Tampico Aeropuerto | Sin zona | Carretera Tampico - Mante 6904-B, MÉXICO, Tampico, Tamaulipas, 89348 | Activo | 29/07/2026 | — |
-| 01 | Foly Muebles Tampico Centro | Sin zona | Cristóbal Colón 103, TAMPICO CENTRO, Tampico, Tamaulipas, 89000 | Activo | 29/07/2026 | — |
+### Columnas de la Tabla:
+| Columna | Descripción | Ejemplo Real en Sistema |
+|---------|-------------|-------------------------|
+| **ID** | Código numérico de 2 dígitos de la tienda. | `01`, `02`, `04`, `11` |
+| **Nombre** | Nombre comercial de la sucursal o bodega. | `Foly Muebles Tampico Centro`, `Foly Muebles Coatzacoalcos` |
+| **Zona** | Región operativa asignada. | `Zona 1`, `Zona 2`, `Sin zona` |
+| **Domicilio** | Dirección completa con calle, número, colonia, municipio, estado y CP. | `Cristóbal Colón 103, TAMPICO CENTRO, Tampico, Tamaulipas, 89000` |
+| **Estatus** | Estado operativo de la tienda. | Badge verde (*Activo*) / gris (*Inactivo*) |
+| **Fecha registro** | Fecha en que se dio de alta en el ERP. | `29/07/2026` |
+| **Últ. actualización** | Fecha de última modificación de datos o domicilio. | `06/08/2026` o `—` |
+| **Acciones** | Menú de opciones de edición y estatus. | `⋮` |
 
 ---
 
-## 4. Flujo Principal: Crear Nueva Sucursal
+## 3. Pestañas de Filtro y Búsqueda en Tiempo Real
 
-### Paso 1: Navegar a Catálogos > Sucursales
-- Iniciar sesión como Administrador
-- Clic en Catálogos en sidebar → Clic en Sucursales
-- Verificar título "Sucursales" visible
-- Verificar tabla con sucursales cargadas
+La vista principal cuenta con filtros superiores para clasificar tiendas y bodegas:
 
-### Paso 2: Clic en botón "Nuevo"
-- Botón azul superior derecha
-- Se abre el formulario de creación de sucursal
+```
+[Todos]  |  [Activas]  |  [Inactivas]
+```
 
-### Paso 3: Llenar formulario "Nueva sucursal"
+### 3.1 Filtro de Sucursales Activas / Inactivas
+Permite visualizar rápidamente solo las sucursales en operación o consultar el histórico de ubicaciones cerradas:
 
-El formulario se abre como un modal lateral con el título **"Nueva sucursal"** y el mensaje "Capture los datos de ubicación de la nueva sucursal.".
-
-#### Botón del formulario:
-- **Guardar**: Guarda la nueva sucursal
-
-#### Campos del formulario:
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| **Nombre de la sucursal** | Input | Sí | Ej. "Foly Muebles Centro" |
-| **Zona** | Dropdown | Sí | Seleccionar zona |
-| **Segmento de negocio** | Dropdown | Sí | Buscar segmento |
-| **Calle** | Input | Sí | Ej. "Av. Revolución" |
-| **Código postal** | Input | Sí | 5 dígitos |
-| **Colonia** | Input | Sí | Se activa después de ingresar el código postal |
-| **Estado** | Input | No | Deshabilitado, se obtiene del código postal |
-| **Municipio** | Input | No | Deshabilitado, se obtiene del código postal |
-| **Número exterior** | Input | Sí | Ej. "742" |
-| **Número interior** | Input | No | Opcional |
-| **Latitud** | Input | No | Deshabilitado, coordenada geográfica |
-| **Longitud** | Input | No | Deshabilitado, coordenada geográfica |
-| **Ubicación** | Mapa | No | Mapa interactivo para ubicar la sucursal |
-
-### Paso 4: Guardar y verificar
-- Clic en **Guardar**
-- La sucursal aparece en la tabla con los datos correspondientes
+![Filtro Activas](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-filtro-activas-real.png)
 
 ---
 
-## 5. Flujo Secundario: Filtrar Sucursales
+### 3.2 Búsqueda Dinámica
+Escribe en el campo **"Buscar"** el nombre de la ciudad o calle (ej. *Altamira*, *Coatzacoalcos*) para filtrar la tabla en tiempo real:
 
-### Paso 1: Navegar a Catálogos > Sucursales
-
-### Paso 2: Usar tabs y búsqueda
-- Seleccionar tab **Activas** o **Inactivas** según el filtro deseado
-- Opcionalmente, escribir un nombre en el campo de búsqueda
-
-### Paso 3: Verificar resultados
-- Tabla filtrada con sucursales coincidentes
+![Búsqueda Dinámica](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/02-busqueda-filtrada-real.png)
 
 ---
 
-## 6. Consideraciones Importantes
+## 4. Paso a Paso: Cómo Dar de Alta una Nueva Sucursal
 
-- Cada sucursal pertenece a una **Zona** previamente configurada o puede estar **Sin zona**.
-- La columna **Domicilio** incluye calle, colonia, ciudad, estado y código postal.
-- El estatus **Activo** se visualiza con un badge verde.
-- La pestaña **Inactivas** muestra el mensaje "No hay sucursales inactivas" cuando no hay registros inactivos.
-- El formulario usa el **código postal** para completar automáticamente colonia, estado y municipio.
-- El formulario incluye un **mapa de ubicación** para georreferenciar la sucursal.
+### Paso 1: Abrir el formulario de captura
+Haz clic en el botón azul **"Nuevo"** en la esquina superior derecha:
+
+![Modal Nueva Sucursal](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/A2F03-modal-nueva-sucursal.png)
+
+### Paso 2: Datos Generales y Zonificación
+- **Nombre de la sucursal (\*):** Nombre distintivo (ej. *Foly Muebles Poza Rica*).
+- **Zona:** Selecciona la zona operativa registrada en **Catálogos > Zonas**.
+- **Segmento de negocio:** Clasificación comercial interna.
+
+### Paso 3: Domicilio y Georreferenciación
+- **Calle (\*) y Número Exterior (\*):** Dirección física de la tienda.
+- **Número Interior:** Opcional (ej. Local 4B, Plaza Comercial).
+- **Código Postal (\*):** Al ingresar los 5 dígitos, el ERP autocompleta:
+  - **Colonia (\*)** (menú desplegable de colonias válidas).
+  - **Estado** y **Municipio**.
+- **Latitud y Longitud:** Coordenadas GPS para visualización en el mapa interactivo de logística.
+
+### Paso 4: Guardar
+Haz clic en **"Guardar"**. La nueva sucursal aparecerá de inmediato en el listado y estará disponible en todo el ERP para asignación de existencias, usuarios y ventas.
 
 ---
+
+## 5. Menú de Acciones y Modificaciones
+
+Al final de cada fila, presiona el botón de opciones (`⋮`):
+
+![Menú de Acciones](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/Gmr04-menu-acciones-abierto.png)
+
+```
+[ ⋮ ]
+ ├── 1. Editar sucursal
+ └── 2. Desactivar / Activar
+```
+
+---
+
+### 5.1 Edición y Consulta de Ficha Técnica
+Permite actualizar teléfonos, coordenadas GPS o corregir la zona asignada:
+
+![Ficha Detalle de Sucursal](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/5rf04-clic-fila-sucursal.png)
+
+---
+
+## 6. Preguntas Frecuentes
+
+### ¿Qué impacto tiene la Zona asignada a una sucursal?
+> Determina las rutas de reparto predeterminadas para los pedidos originados en esa tienda y las tarifas de flete aplicables en **Catálogos > Costos de envío**.
+
+### ¿Cómo se asignan vendedores o cajeros a una nueva sucursal?
+> Una vez creada la sucursal en este catálogo, dirígete a **Catálogos > Usuarios**, abre la ficha del colaborador y marca la casilla de la nueva tienda en la sección *Sucursal Asignada*.
+
+### ¿Se puede cambiar el estatus de una sucursal a Inactivo?
+> **Sí.** Al desactivar una sucursal, no se permitirá abrir nuevas cajas ni capturar ventas en esa tienda, pero se conservará todo el historial contable, existencias pasadas y garantías de clientes.
