@@ -1,81 +1,101 @@
-# Flujo: Catálogos - Vendedores (Equipo de Ventas)
+# Manual de Usuario: Catálogo de Vendedores (Equipo de Ventas)
 
-## Fecha: 2026-08-17
-## Módulo: Catálogos > Vendedores
-## Título en Sistema: Equipo de ventas
-## URL: /catalogos/vendedores
-## Estado: Documentado y Verificado en Vivo
+**Módulo:** Catálogos > Vendedores  
+**Acceso en ERP:** Menú lateral > Catálogos > Vendedores (`/catalogos/vendedores`)  
+**Dirigido a:** Gerencias Comerciales, Jefes de Sucursal, Recursos Humanos y Administradores  
 
 ---
 
-## 1. Descripción General
+## 1. ¿Para qué sirve este módulo?
 
-El submódulo **Vendedores** (titulado en interfaz como **"Equipo de ventas"**) es el catálogo centralizado donde se consultan y monitorean todos los ejecutivos y asesores comerciales activos en el ERP Foly. 
+El módulo de **Vendedores** (titulado en la interfaz como **"Equipo de ventas"**) es el directorio centralizado de consulta, filtrado y monitoreo de todos los asesores y ejecutivos comerciales autorizados en **Foly Muebles**.
 
-A diferencia de otros catálogos con alta manual directa, la incorporación de un vendedor se gestiona de manera automática desde **Catálogos > Usuarios** al registrar a un colaborador con el rol de *Vendedor*. Este catálogo consolida su información de contacto, ID de empleado y sucursales físicas asignadas para fines de asignación de metas, cotizaciones y comisiones de venta.
-
----
-
-## 2. Acceso al Módulo
-
-### Navegación por sidebar:
-1. Iniciar sesión en el ERP Foly.
-2. En el menú lateral izquierdo, hacer clic en **Catálogos** para expandir la lista.
-3. Seleccionar **Vendedores**.
-4. URL resultante: `/catalogos/vendedores`.
+A través de este catálogo se gestionan:
+- **Directorio de Asesores Comerciales:** Visualización de la fuerza de ventas activa con su identificador numérico, nombre y número celular de contacto.
+- **Asignación de Sucursales:** Supervisión de las tiendas físicas donde cada vendedor está habilitado para cotizar y registrar ventas.
+- **Vinculación con Metas y Comisiones:** Base operativa para la asignación de objetivos mensuales de venta en **Catálogos > Metas**.
+- **Sincronización Automática con Usuarios:** La fuerza de ventas se nutre de forma directa desde **Catálogos > Usuarios** al asignar el rol de *Vendedor*.
 
 ---
 
-## 3. Estructura de la Tabla "Equipo de ventas"
+## 2. Pantalla Principal y Listado de Vendedores
 
-El listado principal presenta las siguientes columnas exactas:
+Al ingresar a **Catálogos > Vendedores**, el sistema muestra la tabla consolidada con los ejecutivos comerciales registrados:
 
+![Pantalla Principal - Listado de Vendedores](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-listado-vendedores.png)
+
+### Columnas de la Tabla:
 | Columna | Descripción | Ejemplo Real en Sistema |
 |---------|-------------|-------------------------|
-| **ID** | Identificador numérico único de 4 dígitos del vendedor / colaborador. | `0012` |
-| **Nombre** | Nombre completo del ejecutivo de ventas. | `bryan vendedor` |
+| **ID** | Identificador único de 4 dígitos del vendedor / empleado. | `0012` |
+| **Nombre** | Nombre completo del ejecutivo comercial. | `bryan vendedor` |
 | **Celular** | Teléfono celular a 10 dígitos registrado para contacto y OTP. | `6699336655` |
-| **Sucursales** | Sucursal o sucursales físicas donde el vendedor tiene autorización para operar. | `Foly Muebles Altamira` |
-
-### Herramientas de Control y Navegación:
-- **Buscador Dinámico (`Buscar`)**: Filtra en tiempo real por nombre del vendedor, número de celular, sucursal o ID.
-- **Paginador**: Selector de registros por página (`10`, `25`, `50`) con contador (`1-N de N`).
+| **Sucursales** | Sucursal o sucursales físicas donde tiene autorización de venta. | `Foly Muebles Altamira` |
 
 ---
 
-## 4. Flujo Operativo: Alta y Asignación de Vendedores
+## 3. Filtros y Búsqueda en Tiempo Real
 
-```
-[1. Navegar a Catálogos > Usuarios]
-                 ↓
-[2. Clic en botón "Nuevo"] → (/catalogos/usuarios/nuevo)
-                 ↓
-[3. Llenar Datos]: Nombre, Apellidos, No. Empleado, Celular (10 dígitos)
-                 ↓
-[4. Asignar Rol]: Seleccionar "Vendedor" en el selector de roles
-                 ↓
-[5. Asignar Sucursal]: Marcar la(s) tienda(s) donde despachará
-                 ↓
-[6. Guardar / Enviar Invitación]
-                 ↓
-[7. Sincronización Automática]: El colaborador aparece de inmediato en /catalogos/vendedores
-```
+### 3.1 Filtrado por Sucursal
+En la parte superior se cuenta con un selector desplegable para filtrar el equipo de ventas según la tienda física:
+
+![Filtro por Sucursal](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/02-filtro-sucursal-desplegado.png)
+
+### 3.2 Búsqueda Predictiva
+La barra de búsqueda permite localizar asesores al instante ingresando su nombre, teléfono o ID de empleado:
+
+![Búsqueda Dinámica](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-busqueda-filtrada.png)
 
 ---
 
-## 5. Integración con Otros Módulos del ERP
+## 4. Paso a Paso: Cómo Dar de Alta o Gestionar un Vendedor
+
+Debido a que este catálogo sincroniza automáticamente a todo usuario con el perfil comercial, el flujo para registrar o modificar un vendedor es el siguiente:
+
+### Paso 1: Ingresar a Catálogos > Usuarios
+En el menú lateral izquierdo, dirígete a **Catálogos > Usuarios** (`/catalogos/usuarios`).
+
+### Paso 2: Crear el Nuevo Usuario
+Haz clic en el botón azul **"+ Nuevo"** para abrir el formulario de alta.
+
+### Paso 3: Completar Datos y Asignar el Rol
+1. Ingresa el **Nombre(s)**, **Apellido(s)** y **Número de empleado**.
+2. En el campo **Celular (\*)**, ingresa el número telefónico a 10 dígitos.
+3. En el campo **Selecciona un rol (\*)**, selecciona **"Vendedor"**.
+4. En **Sucursal Asignada**, marca la(s) tienda(s) donde el ejecutivo atenderá clientes.
+
+### Paso 4: Guardar
+Haz clic en **"Enviar invitación"** o **"Guardar"**. El sistema creará la cuenta y el colaborador se reflejará de inmediato en la tabla de **Catálogos > Vendedores**.
+
+---
+
+## 5. Selección y Monitoreo del Equipo de Ventas
+
+Al interactuar con la lista de ejecutivos, el sistema resalta la fila seleccionada para facilitar la consulta de información:
+
+![Selección de Vendedor](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/04-seleccion-vendedor.png)
+
+---
+
+## 6. Integración con Otros Módulos del ERP
 
 | Módulo | Tipo de Integración |
-|--------|---------------------|
-| **Metas (`/catalogos/metas`)** | Asignación de objetivos mensuales de venta por ejecutivo y por sucursal. |
-| **Ventas (`/ventas`)** | Selección del vendedor responsable al generar cotizaciones, pedidos o notas de venta. |
-| **Solicitudes de Crédito** | Registro del asesor que origina y da seguimiento a la solicitud del cliente. |
-| **Usuarios (`/catalogos/usuarios`)** | Control de credenciales, autenticación OTP y bloqueo de acceso. |
+| :--- | :--- |
+| **Metas (`/catalogos/metas`)** | Asignación de objetivos mensuales de venta en monto ($) por ejecutivo y sucursal. |
+| **Ventas (`/ventas`)** | Selección del vendedor responsable al generar cotizaciones, pedidos y notas de venta. |
+| **Solicitudes de Crédito** | Registro del asesor que origina la solicitud y brinda atención al cliente. |
+| **Usuarios (`/catalogos/usuarios`)** | Control de credenciales, cambio de rol, reactivación o baja del colaborador. |
 
 ---
 
-## 6. Reglas de Negocio
+## 7. Preguntas Frecuentes (FAQ)
 
-1. **Dependencia de Rol**: Solo los usuarios que posean el rol de *Vendedor* en su ficha de usuario se visualizan en este catálogo.
-2. **Visibilidad por Sucursal**: En los módulos de ventas y cotizaciones, los vendedores disponibles para selección en los dropdowns se filtran según la sucursal activa de la sesión.
-3. **Persistencia Histórica**: Si un vendedor causa baja o pasa a estatus *Inactivo*, su nombre e ID se preservan en las ventas y pedidos históricos para efectos de auditoría y reportes.
+### ¿Por qué no aparece un botón "Nuevo" en el catálogo de Vendedores?
+Porque el catálogo de vendedores es un directorio especializado que se alimenta de forma automática. Para agregar un vendedor, simplemente da de alta al colaborador en **Catálogos > Usuarios** y asígnale el rol de **Vendedor**.
+
+### ¿Cómo cambio a un vendedor de sucursal?
+Ve a **Catálogos > Usuarios**, busca al colaborador, abre su menú de opciones (`⋮`), haz clic en **Editar**, actualiza las sucursales marcadas y guarda los cambios. El cambio se reflejará al instante en este módulo y en el punto de venta.
+
+### ¿Qué sucede con las ventas históricas si un vendedor se da de baja?
+Al desactivar al vendedor en el catálogo de usuarios, no podrá iniciar sesión ni registrar nuevas cotizaciones, pero su nombre e ID permanecerán asociados a todos los pedidos, ventas y comisiones históricas para fines de auditoría.
+
