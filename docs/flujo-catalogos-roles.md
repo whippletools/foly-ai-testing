@@ -1,133 +1,95 @@
-# Flujo: Catálogos - Roles
+# Manual de Usuario: Catálogo de Roles y Matriz de Permisos
 
-## Fecha: 2026-08-17
-## Módulo: Catálogos > Roles
-## URL Listado: /catalogos/roles
-## URL Formulario Nuevo: /catalogos/roles/nuevo
-## Estado: Documentado y Verificado
+**Módulo:** Catálogos > Roles  
+**Acceso en ERP:** Menú lateral > Catálogos > Roles (`/catalogos/roles`)  
+**Dirigido a:** Administradores del Sistema, Recursos Humanos, Auditoría y Seguridad de la Información  
 
 ---
 
-## 1. Descripción General
+## 1. ¿Para qué sirve este módulo?
 
-El submódulo **Roles** administra la seguridad perimetral y los permisos de acceso del ERP Foly. Permite definir perfiles operativos (por ejemplo: *Administrador*, *Cajero*, *Vendedor*, *Cobrador*, *Auditor*) y asignar permisos granulares de cuatro niveles (**Visualizar**, **Crear**, **Editar**, **Borrar**) sobre las 60 vistas y submódulos que componen la plataforma web y móvil del ERP.
+El módulo de **Roles** es el centro de control de **seguridad y permisos de acceso** de **Foly Muebles**. Permite crear perfiles de usuario estandarizados (ej. *Administrador, Vendedor, Cajero, Cobranza, Gerente de Tienda, Almacenista*) y asignar con precisión qué botones, menús y acciones puede realizar cada colaborador en el ERP.
 
----
-
-## 2. Acceso al Módulo
-
-### Navegación por sidebar:
-1. Iniciar sesión en el ERP Foly como Administrador.
-2. En el menú lateral izquierdo, hacer clic en **Catálogos** para desplegar los submódulos.
-3. Seleccionar **Roles**.
-4. URL resultante: `/catalogos/roles`.
+A través de esta matriz de privilegios se controlan:
+- **Segregación de Funciones:** Asegurar que un cajero solo cobre, un vendedor solo cotice y un auditor solo consulte información sin poder editar precios.
+- **Permisos Granulares por Módulo:** Niveles de acceso para *Visualizar*, *Crear*, *Editar* y *Eliminar* sobre cada sección del sistema.
+- **Asignación a Usuarios:** Los roles creados aquí se vinculan directamente con los empleados en **Catálogos > Usuarios**.
 
 ---
 
-## 3. Estructura de la Tabla de Roles
+## 2. Pantalla Principal y Directorio de Roles
 
-La vista principal de listado presenta las siguientes columnas de información:
+Al ingresar a **Catálogos > Roles**, se muestra la tabla con todos los perfiles de seguridad activos:
 
-| Columna | Descripción |
-|---------|-------------|
-| **ID** | Identificador único del rol en base de datos. |
-| **Nombre** | Nombre descriptivo del perfil de usuario. |
-| **Plataforma** | Entorno donde opera el rol (*Web*, *Móvil*, *ERP*). |
-| **Últ. Actualización** | Fecha y hora de la última modificación en permisos. |
-| **Acciones** | Botones de edición detallada, clonación y activación/desactivación. |
+![Pantalla Principal - Listado de Roles](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-listado-roles.png)
 
----
-
-## 4. Formulario de Creación y Edición (`/catalogos/roles/nuevo`)
-
-### 4.1 Datos Principales del Rol
-- **Nombre del Rol**: Campo de texto obligatorio.
-- **Plataforma**: Selector del entorno de ejecución.
-- **Descripción / Notas**: Detalle de alcance del puesto.
-
-### 4.2 Matriz Granular de Permisos (4 niveles por vista: Visualizar | Crear | Editar | Borrar)
-
-Cada una de las siguientes áreas funcionales cuenta con 4 casillas de verificación independientes:
-
-| Sección / Vista | Visualizar | Crear | Editar | Borrar |
-|-----------------|:----------:|:-----:|:------:|:------:|
-| **Artículos** | ☐ | ☐ | ☐ | ☐ |
-| **Atención al cliente** | ☐ | ☐ | ☐ | ☐ |
-| **Cajas** | ☐ | ☐ | ☐ | ☐ |
-| **Cancelar venta** | ☐ | ☐ | ☐ | ☐ |
-| **Clientes** | ☐ | ☐ | ☐ | ☐ |
-| **Cobranza** | ☐ | ☐ | ☐ | ☐ |
-| **Confirmar traspaso** | ☐ | ☐ | ☐ | ☐ |
-| **Costeos** | ☐ | ☐ | ☐ | ☐ |
-| **Costos de envío** | ☐ | ☐ | ☐ | ☐ |
-| **Cotizaciones guardadas** | ☐ | ☐ | ☐ | ☐ |
-| **Dashboard** | ☐ | ☐ | ☐ | ☐ |
-| **Departamentos** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle atención al cliente** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de artículo** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de costeo** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de cotización** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de pedido** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de promoción** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de proveedor** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de rol** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de sucursal** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de traspaso** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de usuario** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de vendedor** | ☐ | ☐ | ☐ | ☐ |
-| **Detalle de venta** | ☐ | ☐ | ☐ | ☐ |
-| **Editar traspaso** | ☐ | ☐ | ☐ | ☐ |
-| **Folypuntos** | ☐ | ☐ | ☐ | ☐ |
-| **Inicio de sesión** | ☐ | ☐ | ☐ | ☐ |
-| **Inventario** | ☐ | ☐ | ☐ | ☐ |
-| **Liquidaciones** | ☐ | ☐ | ☐ | ☐ |
-| **Mensajes** | ☐ | ☐ | ☐ | ☐ |
-| **Mercancía dañada** | ☐ | ☐ | ☐ | ☐ |
-| **Metas** | ☐ | ☐ | ☐ | ☐ |
-| **Morosidad** | ☐ | ☐ | ☐ | ☐ |
-| **Nueva recepción de mercancía** | ☐ | ☐ | ☐ | ☐ |
-| **Nueva solicitud de descuento** | ☐ | ☐ | ☐ | ☐ |
-| **Nueva venta** | ☐ | ☐ | ☐ | ☐ |
-| **Nuevo pedido** | ☐ | ☐ | ☐ | ☐ |
-| **Nuevo traspaso** | ☐ | ☐ | ☐ | ☐ |
-| **Pedidos** | ☐ | ☐ | ☐ | ☐ |
-| **Pólizas Generadas** | ☐ | ☐ | ☐ | ☐ |
-| **Pólizas Sistema** | ☐ | ☐ | ☐ | ☐ |
-| **Promociones** | ☐ | ☐ | ☐ | ☐ |
-| **Prorrateos** | ☐ | ☐ | ☐ | ☐ |
-| **Proveedores** | ☐ | ☐ | ☐ | ☐ |
-| **Proveedores de reparaciones** | ☐ | ☐ | ☐ | ☐ |
-| **Recepción de mercancía** | ☐ | ☐ | ☐ | ☐ |
-| **Roles** | ☐ | ☐ | ☐ | ☐ |
-| **Rutas** | ☐ | ☐ | ☐ | ☐ |
-| **Solicitudes de crédito** | ☐ | ☐ | ☐ | ☐ |
-| **Solicitudes de descuentos** | ☐ | ☐ | ☐ | ☐ |
-| **Solicitudes de facturas** | ☐ | ☐ | ☐ | ☐ |
-| **Sucursales** | ☐ | ☐ | ☐ | ☐ |
-| **Tasa de mora** | ☐ | ☐ | ☐ | ☐ |
-| **Tipos de Transacción** | ☐ | ☐ | ☐ | ☐ |
-| **Traspasos** | ☐ | ☐ | ☐ | ☐ |
-| **Usuarios** | ☐ | ☐ | ☐ | ☐ |
-| **Validar OTP** | ☐ | ☐ | ☐ | ☐ |
-| **Vendedores** | ☐ | ☐ | ☐ | ☐ |
-| **Ventas** | ☐ | ☐ | ☐ | ☐ |
-| **Zonas** | ☐ | ☐ | ☐ | ☐ |
+### Columnas de la Tabla:
+| Columna | Descripción | Ejemplo Real en Sistema |
+|---------|-------------|-------------------------|
+| **ID** | Código numérico del rol. | `01`, `02`, `03`, `04` |
+| **Nombre** | Título del puesto o perfil operativo. | `Administrador`, `Vendedor`, `Cajero`, `Cobranza`, `Gerente` |
+| **Descripción** | Alcance de responsabilidades asignadas al perfil. | *"Acceso total al sistema"*, *"Operación de terminales de cobro"* |
+| **Estatus** | Estado del rol. | Badge verde (*Activo*) |
+| **Acciones** | Menú desplegable para editar permisos o desactivar. | `⋮` |
 
 ---
 
-## 5. Flujo Operativo: Creación de un Nuevo Rol
+## 3. Búsqueda en Tiempo Real
 
-1. **Ingresar a Catálogos > Roles**.
-2. Hacer clic en el botón azul **"Nuevo"** (`/catalogos/roles/nuevo`).
-3. Asignar el **Nombre** del rol (ejemplo: *Cajero Sucursal Centro*).
-4. Configurar la matriz de permisos activando únicamente las casillas necesarias para la operación del puesto.
-5. Hacer clic en el botón **"Guardar"**.
-6. El rol queda registrado en la base de datos y disponible para ser asignado en el submódulo **Catálogos > Usuarios**.
+Escribe en la barra de búsqueda el nombre del perfil (ej. *Vendedor*, *Cajero*) para filtrar los roles instantáneamente:
+
+![Búsqueda Dinámica](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/Sdt02-busqueda-filtrada.png)
 
 ---
 
-## 6. Reglas de Negocio y Buenas Prácticas
+## 4. Paso a Paso: Cómo Crear o Configurar un Rol con Matriz de Permisos
 
-1. **Principio de menor privilegio**: Otorgar únicamente los permisos estrictamente indispensables para la función operativa.
-2. **Permiso de Visualización requerido**: Para poder crear, editar o borrar sobre un módulo, la casilla de *Visualizar* debe estar activada.
-3. **Propagación en tiempo real**: Toda actualización en la matriz de un rol se aplica al usuario correspondiente en su siguiente petición o inicio de sesión.
+### Paso 1: Abrir el Formulario
+Haz clic en el botón azul **"Nuevo"** en la esquina superior derecha:
+
+![Modal Nuevo Rol y Matriz de Permisos](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-modal-nuevo-rol-permisos.png)
+
+### Paso 2: Datos Generales del Rol
+1. **Nombre del rol (\*):** Escribe el nombre descriptivo del puesto (ej. *Auditor de Inventarios*).
+2. **Descripción:** Describe brevemente las funciones y sucursales donde operará.
+
+### Paso 3: Configurar la Matriz de Permisos por Módulo
+Marca o desmarca las casillas según el nivel de privilegio que requiera el puesto:
+
+| Módulo del ERP | Permisos Disponibles |
+|----------------|----------------------|
+| **Solicitudes de Crédito** | Ver listado, Crear solicitud, Editar datos, Aprobar crédito, Rechazar. |
+| **Ventas y Cotizaciones** | Generar cotización, Aplicar descuentos, Emitir pagaré, Facturar. |
+| **Cajas y Tesorería** | Apertura de turno, Cobro de ventas, Retiro parcial de efectivo, Corte de caja. |
+| **Clientes** | Consulta de historial, Alta de clientes, Modificación de domicilio. |
+| **Inventario y Traspasos** | Consulta de existencias, Entrada de almacén, Traspasos entre sucursales, Ajustes. |
+| **Catálogos** | Configuración de Artículos, Precios, Zonas, Proveedores y Usuarios. |
+| **Atención a Clientes** | Registro de garantías, Asignación a talleres y Cierre de folios. |
+
+### Paso 4: Guardar
+Haz clic en **"Guardar rol"**. El nuevo perfil quedará disponible de inmediato en **Catálogos > Usuarios** para asignarlo a nuevos empleados.
+
+---
+
+## 5. Menú de Acciones y Modificación
+
+Al presionar el botón de opciones (`⋮`) al final de cualquier rol:
+
+```
+[ ⋮ ]
+ ├── 1. Editar permisos
+ └── 2. Desactivar / Eliminar
+```
+
+---
+
+## 6. Preguntas Frecuentes
+
+### ¿Qué sucede si modifico los permisos de un rol existente?
+> Los cambios se aplican automáticamente a **todos los usuarios** que tengan asignado ese rol en cuanto recarguen su pantalla o inicien sesión nuevamente.
+
+### ¿Se puede asignar más de un rol a un mismo usuario?
+> En **Catálogos > Usuarios** se selecciona el **Rol Principal** del empleado. Si requiere permisos combinados especiales, se recomienda crear un rol específico (ej. *Gerente de Sucursal con Caja*).
+
+### ¿Se puede eliminar un rol que ya tiene usuarios asignados?
+> **No por seguridad.** Primero debes reasignar a los empleados activos a otro rol antes de poder desactivar o borrar el perfil anterior.
