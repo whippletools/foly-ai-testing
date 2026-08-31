@@ -1,0 +1,167 @@
+{
+  "login": {
+    "title": "",
+    "headings": [
+      "Ingresa a tu cuenta"
+    ],
+    "inputs": [
+      {
+        "placeholder": "Ingresa tu número de empleado",
+        "name": "username",
+        "type": "text",
+        "required": false
+      },
+      {
+        "placeholder": "Ingresa tu contraseña",
+        "name": "password",
+        "type": "password",
+        "required": false
+      }
+    ],
+    "buttons": [
+      "",
+      "Ingresar"
+    ],
+    "texts": "Ingresa a tu cuenta\nNúmero de empleado *\n​\nNúmero de empleado *\nIngresa tu contraseña *\n​\nIngresa tu contraseña *\nIngresar\n\n¿Olvidaste tu contraseña?\n\nRecuperar\nBackend: staging"
+  },
+  "sidebar_global": {
+    "navItems": [],
+    "allLinks": [],
+    "version": "V.1.0",
+    "userProfile": ""
+  },
+  "solicitudes_credito": {
+    "title": "Solicitudes de crédito",
+    "tabs": [
+      "Todas (9)",
+      "Pendiente",
+      "Aceptadas",
+      "Rechazadas"
+    ],
+    "ths": [
+      "ID",
+      "Estatus",
+      "Nombre",
+      "Teléfono",
+      "Solicitado",
+      "Domicilio",
+      "Tipo",
+      ""
+    ],
+    "filasCount": 9,
+    "buttons": [
+      "Nueva solicitud",
+      "Todas (9)",
+      "Pendiente",
+      "Aceptadas",
+      "Rechazadas"
+    ]
+  },
+  "modal_nueva_solicitud": {
+    "text": "Identificación oficial\n\nVerifica la INE del cliente\n\nPaso 1 de 3 · Identificación oficial\n\nAcceso a la cámara\n\nPermite el acceso a la cámara para elegir la que te parezca mejor.\n\nElegir cámara\nSiguiente",
+    "buttons": [
+      {
+        "text": "",
+        "disabled": false
+      },
+      {
+        "text": "Elegir cámara",
+        "disabled": false
+      },
+      {
+        "text": "Siguiente",
+        "disabled": true
+      }
+    ]
+  },
+  "ventas": {
+    "title": "Ventas",
+    "tabs": [
+      "Todas (47)",
+      "Finalizadas",
+      "Realizadas",
+      "Pendientes"
+    ],
+    "ths": [
+      "Folio",
+      "Estatus",
+      "Cliente",
+      "Artículos",
+      "Fecha",
+      "Tipo",
+      "Total",
+      ""
+    ],
+    "filasCount": 10,
+    "buttons": [
+      "Nueva solicitud",
+      "Nueva",
+      "Todas (47)",
+      "Finalizadas",
+      "Realizadas",
+      "Pendientes"
+    ]
+  },
+  "pos_nueva_venta": {
+    "text": "Folysoft\n\nV.1.0\n\nNueva solicitud\n\nSolicitudes de crédito\n\nVentas\n\nTodas las ventas\n\nVentas en rojo\n\nCotizaciones guardadas\n\nCajas\n\nClientes\n\nPedidos\n\nTraspasos\n\nSolicitudes de descuento\n\nInventario\n\nAtención a cliente\n\nFacturas\n\nRutas\n\nOpciones contables\n\nCatálogos\n\nBA\nBryan Admin\nAdministrador\nNueva venta\nGuardar cotización\nRegistrar venta (pendiente de cobro)\nArtículos\n\nAgrega los artículos para este cliente.\n\nEscanear artículos\nBuscar\n\nNo tienes artículos agregados a esta venta\n\nTipo de venta\nCrédito\nContado\nApartado\nCliente\n\nAgrega los artículos para este cliente.\n\n​\n​\nBackend: staging",
+    "buttons": [
+      "Nueva solicitud",
+      "Guardar cotización",
+      "Registrar venta (pendiente de cobro)",
+      "Escanear artículos",
+      "Buscar",
+      "Crédito",
+      "Contado",
+      "Apartado"
+    ],
+    "inputs": [
+      {
+        "placeholder": "Buscar cliente",
+        "name": ""
+      }
+    ]
+  },
+  "clientes": {
+    "title": "Clientes",
+    "tabs": [
+      "Todos (11)",
+      "Activos",
+      "Inactivos",
+      "Bloqueados"
+    ],
+    "ths": [
+      "ID",
+      "Nombre",
+      "Teléfono",
+      "Correo electrónico",
+      "Estatus",
+      "Domicilio",
+      ""
+    ],
+    "filasCount": 10,
+    "buttons": [
+      "Nueva solicitud",
+      "Todos (11)",
+      "Activos",
+      "Inactivos",
+      "Bloqueados"
+    ],
+    "inputs": [
+      {
+        "placeholder": "Buscar"
+      },
+      {
+        "placeholder": ""
+      }
+    ]
+  },
+  "catalogos_articulos": {
+    "url": "https://erpfoly-dev.vercel.app/403",
+    "ths": [],
+    "filasCount": 0,
+    "buttons": [
+      "Nueva solicitud",
+      "Ir a mi inicio"
+    ]
+  }
+}
