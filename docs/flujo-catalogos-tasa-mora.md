@@ -1,77 +1,61 @@
-# Flujo: Catálogos - Tasa de mora
+# Manual de Usuario: Catálogo de Tasa de Mora Financiera
 
-## Fecha: 2026-08-17
-## Módulo: Catálogos > Tasa de mora
-## URL: /catalogos/tasa-mora
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Tasa de mora** permite definir y actualizar el porcentaje de interés moratorio que el sistema ERP Foly aplica de forma automática a las cuentas y abonos vencidos de los clientes con crédito activo. Este valor actúa como parámetro global para el cálculo financiero de recargos por retraso de pago en el módulo de Cobranza y Ventas a Crédito.
+**Módulo:** Catálogos > Tasa de mora  
+**Acceso en ERP:** Menú lateral > Catálogos > Tasa de mora (`/catalogos/tasa-mora`)  
+**Dirigido a:** Dirección Financiera, Crédito y Cobranza, Tesorería y Contabilidad  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión en el sistema ERP Foly.
-2. En el menú lateral izquierdo, hacer clic en **Catálogos** para expandir las opciones.
-3. Hacer clic en **Tasa de mora**.
-4. URL resultante: `/catalogos/tasa-mora`.
+El módulo de **Tasa de mora** es el parámetro financiero maestro de **Foly Muebles** donde se fija el porcentaje de **interés moratorio anual** aplicable a los clientes que presentan atraso en el pago de sus letras o financiamientos.
 
-### Permisos requeridos:
-- Requiere rol de **Administrador** o usuario con permisos especiales de configuración financiera en Catálogos.
+### Regla Financiera del ERP:
+> **Tasa de interés moratorio anual aplicada al capital vencido de los créditos.**  
+> *El cambio aplica de inmediato a todo el sistema, incluida la mora ya vencida de meses anteriores sobre los saldos insolutos.*
 
 ---
 
-## 3. Elementos de la UI Identificados
+## 2. Pantalla Principal y Parámetro Vigente
 
-### Header
-- **Título**: "Tasa de mora" (`h1`).
-- **Botón "Nueva solicitud"**: Acceso rápido global en el encabezado.
+Al ingresar a **Catálogos > Tasa de mora**, se visualiza la tasa moratoria activa y la auditoría de última actualización:
 
-### Formulario de Configuración
-- **Campo de porcentaje de tasa**:
-  - **Tipo**: Numérico / Decimal (`input[type="text"]` con formato de moneda/porcentaje).
-  - **Placeholder**: `0.00`
-  - **Función**: Permite ingresar el porcentaje mensual o anualizado de recargo por mora.
-- **Botón "Guardar"**:
-  - **Ubicación**: Junto al campo o en la parte inferior del formulario.
-  - **Función**: Aplica la nueva tasa moratoria a nivel global en la base de datos del ERP.
+![Pantalla Principal - Tasa de Mora](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-pantalla-principal-tasa-mora.png)
+
+### Elementos de la Pantalla:
+| Elemento | Descripción | Valor Actual en ERP |
+|----------|-------------|---------------------|
+| **Tasa de Mora (% anual)** | Porcentaje anualizado de recargo sobre capital vencido. | `30.00 % anual` |
+| **Última actualización** | Registro de auditoría con fecha y hora exacta de modificación. | `5/8/2026, 1:08:32 p.m.` |
+| **Botón "Guardar"** | Botón azul para asentar y aplicar el nuevo porcentaje. | `Guardar` |
 
 ---
 
-## 4. Flujo de Configuración: Modificar Tasa de Mora
+## 3. Paso a Paso: Cómo Modificar la Tasa Moratoria
 
-### Paso 1: Acceder al submódulo
-- Navegar a **Catálogos > Tasa de mora**.
-- El sistema muestra el valor porcentual actualmente configurado.
+### Paso 1: Ingresar a la Pantalla
+Navega en el menú lateral a **Catálogos > Tasa de mora**.
 
-### Paso 2: Ingresar la nueva tasa
-- Hacer clic en el campo numérico de la tasa.
-- Ingresar el nuevo porcentaje aplicable (ejemplo: `5.00` para 5%).
+### Paso 2: Editar el Porcentaje
+Haz clic sobre la casilla numérica e introduce el nuevo porcentaje anual acordado por el comité de crédito (ej. `36.00`):
 
-### Paso 3: Guardar cambios
-- Hacer clic en el botón **"Guardar"**.
-- El sistema valida el formato numérico y actualiza la tasa moratoria.
-- Se muestra confirmación visual de guardado exitoso.
+![Edición de Porcentaje de Mora](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/02-edicion-porcentaje-mora.png)
 
----
+### Paso 3: Guardar y Aplicar
+Presiona el botón azul **"Guardar"**. 
 
-## 5. Impacto en Otros Módulos
-
-| Módulo Afectado | Impacto de la Tasa de Mora |
-|-----------------|-----------------------------|
-| **Crédito y Cobranza** | Cálculo diario o quincenal del recargo moratorio en abonos vencidos. |
-| **Caja / Cobros** | Desglose automático de saldo regular vs. recargo moratorio en el recibo de pago. |
-| **Estados de Cuenta** | Visualización clara del interés generado por atraso en el historial del cliente. |
+El sistema recalculará automáticamente los intereses moratorios en los estados de cuenta de los clientes morosos y en la pantalla de cobro en caja.
 
 ---
 
-## 6. Consideraciones y Reglas de Negocio
+## 4. Preguntas Frecuentes
 
-1. **Vigencia no retroactiva**: El cambio en la tasa de mora generalmente aplica para los cortes y vencimientos generados a partir de la fecha de actualización, respetando las condiciones contractuales previamente emitidas en pagarés de crédito.
-2. **Validación de rango**: El campo no admite valores negativos y requiere validación de 2 decimales (`0.00`).
-3. **Auditoría**: Toda modificación de tasa de mora queda registrada en la bitácora del sistema con usuario, fecha y valor anterior.
+### ¿Cómo se calcula el interés moratorio diario en una letra vencida?
+> La fórmula financiera aplicada por el ERP es:  
+> $$\text{Interés diario} = \frac{\text{Capital Vencido} \times (\text{Tasa Anual} / 100)}{360} \times \text{Días de Atraso}$$
+
+### ¿Afecta el cambio de tasa a los créditos liquidados o al corriente?
+> **No.** Solo genera recargos a los abonos que exceden su fecha límite de pago sin liquidarse.
+
+### ¿Se pueden condonar intereses moratorios en caja?
+> Las condonaciones o convenios de descuento sobre moratorios se autorizan a través del módulo de **Solicitudes de descuento** o mediante el perfil de *Supervisor de Cobranza*.

@@ -1,162 +1,127 @@
-# Flujo: Catálogos - Proveedores
+# Manual de Usuario: Catálogo de Proveedores
 
-## Fecha: 2026-08-10
-## Módulo: Catálogos > Proveedores
-## URL: /catalogos/proveedores
-## Estado: Documentado
-
----
-
-## 1. Descripción General
-
-El submódulo **Proveedores** permite gestionar el catálogo de proveedores del negocio. Cada proveedor registra su nombre, RFC, email, tipo y cuenta contable. Se utiliza para identificar a los proveedores en compras, pagos y operaciones relacionadas con inventario.
+**Módulo:** Catálogos > Proveedores  
+**Acceso en ERP:** Menú lateral > Catálogos > Proveedores (`/catalogos/proveedores`)  
+**Dirigido a:** Compras, Cuentas por Pagar, Tesorería, Contabilidad y Almacén  
 
 ---
 
-## 2. Acceso al Módulo
+## 1. ¿Para qué sirve este módulo?
 
-### Navegación por sidebar:
-1. Iniciar sesión como Administrador
-2. En el menú lateral, hacer clic en **Catálogos** (se expande)
-3. Hacer clic en **Proveedores**
-4. URL resultante: `/catalogos/proveedores`
+El módulo de **Proveedores** administra el padrón oficial de fabricantes, distribuidores y socios comerciales que abastecen el inventario de **Foly Muebles**. 
 
-### Nota importante:
-- El acceso requiere navegación por sidebar con sesión activa.
-- El usuario debe contar con permisos de Administrador para visualizar y gestionar proveedores.
-
----
-
-## 3. Elementos de la UI Identificados
-
-### Header
-- **Título**: "Proveedores" (h1)
-- **Buscador**: Campo de texto con placeholder "Buscar"
-- **Botón "Nuevo"**: Azul, arriba a la derecha. Crea un nuevo proveedor.
-
-### Tabla de Proveedores
-| Columna | Descripción |
-|---------|-------------|
-| **ID** | Código del proveedor (ej. 0001, 0002) |
-| **Nombre** | Razón social o nombre comercial del proveedor |
-| **RFC** | Registro Federal de Contribuyentes del proveedor |
-| **Email** | Correo electrónico de contacto del proveedor |
-| **Tipo** | Tipo de proveedor (ej. Nacional) |
-| **Cuenta** | Cuenta contable asignada al proveedor |
-
-### Proveedores de ejemplo (datos reales):
-
-| ID | Nombre | RFC | Email | Tipo | Cuenta |
-|----|--------|-----|-------|------|--------|
-| 0003 | Arlix Muebles y Electrodomésticos | AME850101ABC | contacto@arlix.com.mx | Nacional | Sin cuenta |
-| 0005 | Cocinas Integrales Berlín | CIB870225PL8 | proyectos@cocinasberlin.mx | Nacional | Sin cuenta |
-| 0002 | Colchones Restonic del Pacífico | CRP910608MN3 | ventas@restonic-pacifico.mx | Nacional | Sin cuenta |
-| 0004 | Mirage - Norage | MNO900201XYZ | ventas@miragenorage.mx | Nacional | Sin cuenta |
-| 0001 | Muebles del Pacífico | MPA920315KL9 | ventas@mueblesdelpacifico.mx | Nacional | Sin cuenta |
-| 0006 | Proveedor prueba | XAXX010101000 | b.lopez@whipple.cmx | Nacional | Sin cuenta |
+A través de este catálogo se centralizan:
+- **Identidad Fiscal y Comercial:** Razón social, RFC, nombre comercial y tipo de empresa (Nacional o Extranjera).
+- **Condiciones Comerciales y de Crédito:** Días de plazo de pago pactados (ej. *30, 60, 90 días*), políticas de flete (*Pagado* o *Por cobrar*) y límite de crédito.
+- **Directorio de Contactos:** Agenda directa de ejecutivos de venta, cobranza y ejecutivos de cuenta por proveedor.
+- **Integración Contable:** Vinculación directa con el catálogo de cuentas contables (`contabilidad.cuentas`) para compras, gastos y facturación.
+- **Portal de Proveedores:** Envío de invitaciones digitales para que los proveedores carguen sus facturas XML y estados de cuenta.
 
 ---
 
-## 4. Flujo Principal: Crear Nuevo Proveedor
+## 2. Pantalla Principal y Directorio de Proveedores
 
-### Paso 1: Navegar a Catálogos > Proveedores
-- Iniciar sesión como Administrador
-- Clic en Catálogos en sidebar → Clic en Proveedores
-- Verificar título "Proveedores" visible
-- Verificar tabla con proveedores cargados
+Al ingresar a **Catálogos > Proveedores**, se despliega el listado maestro de proveedores:
 
-### Paso 2: Clic en botón "Nuevo"
-- Botón azul superior derecha
-- Se abre el formulario de creación de proveedor
+![Pantalla Principal - Directorio de Proveedores](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/wIa01-listado-proveedores.png)
 
-### Paso 3: Llenar formulario "Nuevo proveedor"
-
-El formulario se abre en una pantalla con el título **"Nuevo proveedor"** y breadcrumb `proveedores > Nuevo`.
-
-#### Botones del formulario:
-- **Guardar**: Guarda el nuevo proveedor
-- **Editar**: Edita la información
-- **Enviar invitación**: Envía una invitación al proveedor
-
-#### Tabs del formulario:
-- **Datos generales**
-- **Contactos**
-- **Datos crediticios**
-
-#### Tab "Datos generales"
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| **Nombre** | Input | Sí | Nombre del proveedor |
-| **Razón social** | Input | Sí | Razón social del proveedor |
-| **RFC** | Input | Sí | Registro Federal de Contribuyentes |
-| **Página web** | Input | No | URL de la página web (placeholder `https://...`) |
-| **Email** | Input | Sí | Email de contacto del proveedor |
-| **Tipo** | Radio | Sí | Nacional o Extranjera. Por defecto: Nacional |
-| **Plazo de pagos (días)** | Input | Sí | Días de plazo para pagos. Ej. "60" |
-| **Flete** | Radio | Sí | Pagado o Cobra. Por defecto: Pagado |
-| **Cuenta contable** | Dropdown | No | Buscar cuenta contable (contabilidad.cuentas) |
-| **Observaciones** | Textarea | No | Notas adicionales del proveedor |
-
-#### Tab "Contactos"
-
-Permite agregar contactos del proveedor con los siguientes campos:
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| **Cargo** | Dropdown | Sí | Seleccionar el cargo del contacto |
-| **Nombre** | Input | Sí | Nombre del contacto |
-| **Número** | Input | Sí | Teléfono del contacto |
-
-- Botón **+ Agregar otro**: Añade más contactos
-
-#### Tab "Datos crediticios"
-
-Se divide en dos secciones:
-
-**Crédito y cobranza**
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| **Atención** | Input | Sí | Persona de atención |
-| **Puesto** | Dropdown | Sí | Puesto del contacto de atención |
-| **Número** | Input | Sí | Teléfono de atención |
-
-**Cuentas bancarias**
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| **Banco** | Input | No | Nombre del banco |
-| **Plaza** | Input | No | Plaza o ciudad de la sucursal bancaria |
-| **Sucursal** | Input | No | Sucursal bancaria |
-| **Cuenta** | Input | No | Número de cuenta bancaria |
-
-- Botón **+ Agregar otra**: Añade más cuentas bancarias
-
-### Paso 4: Guardar y verificar
-- Clic en **Guardar**
-- El proveedor aparece en la tabla con los datos correspondientes
+### Columnas de la Tabla:
+| Columna | Descripción | Ejemplo Real en Sistema |
+|---------|-------------|-------------------------|
+| **ID** | Código numérico consecutivo de 4 dígitos. | `0001`, `0002`, `0003`, `0004` |
+| **Nombre** | Nombre comercial o razón social del fabricante/distribuidor. | `Muebles del Pacífico`, `Colchones Restonic del Pacífico`, `Cocinas Berlín`, `Mirage - Norage` |
+| **RFC** | Registro Federal de Contribuyentes con homoclave. | `MPA920315KL9`, `CRP910608MN3`, `CIB870225PL8`, `MNO900201XYZ` |
+| **Email** | Correo electrónico principal de compras/pedidos. | `ventas@mueblesdelpacifico.mx`, `proyectos@cocinasberlin.mx` |
+| **Tipo** | Origen fiscal del proveedor. | Badge azul (*Nacional*) / (*Extranjera*) |
+| **Cuenta contable** | Cuenta asignada del catálogo contable. | `Sin asignar` o código contable |
+| **Acciones** | Menú desplegable para editar o gestionar. | `⋮` |
 
 ---
 
-## 5. Flujo Secundario: Buscar Proveedor
+## 3. Búsqueda en Tiempo Real
 
-### Paso 1: Navegar a Catálogos > Proveedores
+Escribe en la barra de búsqueda el nombre comercial o el RFC para filtrar el listado instantáneamente:
 
-### Paso 2: Usar el buscador
-- Escribir el nombre, RFC o email del proveedor en el campo de búsqueda
-
-### Paso 3: Verificar resultados
-- Tabla filtrada con proveedores coincidentes
+![Búsqueda Dinámica](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/heA02-busqueda-filtrada.png)
 
 ---
 
-## 6. Consideraciones Importantes
+## 4. Paso a Paso: Cómo Dar de Alta un Nuevo Proveedor
 
-- El proveedor requiere **RFC** válido para su registro.
-- El **email** se utiliza como medio de contacto.
-- El **Tipo** de proveedor indica si es Nacional o Extranjero.
-- La **Cuenta** contable permite vincular al proveedor con la contabilidad.
-- Los proveedores se visualizan como una tabla paginada.
+Para registrar un nuevo proveedor comercial, haz clic en el botón azul **"Nuevo"** en la parte superior derecha (`/catalogos/proveedores/nuevo`).
+
+El formulario se organiza en **3 Pestañas Especializadas**:
+
+```
+[ Pestaña 1: Datos generales ]  |  [ Pestaña 2: Contactos ]  |  [ Pestaña 3: Datos crediticios ]
+```
 
 ---
+
+### Pestaña 1: Datos Generales
+Aquí se capturan los datos fiscales, comerciales y contables:
+
+![Pestaña Datos Generales](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/04-tab-1-datos-generales.png)
+
+#### Campos de Datos Generales:
+| Campo | Obligatorio | Descripción |
+|-------|:-----------:|-------------|
+| **Nombre (\*)** | Sí | Nombre comercial distintivo (ej. *Muebles del Pacífico*). |
+| **Razón social (\*)** | Sí | Razón social fiscal completa (ej. *Muebles del Pacífico S.A. de C.V.*). |
+| **RFC (\*)** | Sí | RFC fiscal de 12 o 13 posiciones con homoclave. |
+| **Página web** | No | Enlace al catálogo o sitio web oficial (`https://...`). |
+| **Email (\*)** | Sí | Correo corporativo para recepción de órdenes de compra. |
+| **Tipo (\*)** | Sí | Selección de radio button: **Nacional** o **Extranjera**. |
+| **Plazo de pagos (días) (\*)** | Sí | Días naturales de crédito otorgados para liquidar facturas (ej. `30`, `45`, `60`). |
+| **Flete (\*)** | Sí | Selección de radio button: **Pagado** (por el proveedor) o **Cobrar** (pagado por Foly). |
+| **Cuenta contable** | No | Asignación de la subcuenta de pasivo correspondiente en `contabilidad.cuentas`. |
+| **Observaciones** | No | Notas sobre condiciones de entrega, empaque o garantías. |
+
+---
+
+### Pestaña 2: Directorio de Contactos
+Permite registrar a los ejecutivos de atención al cliente, cobranza o agentes de ventas:
+
+![Pestaña Contactos](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/05-tab-2-contactos.png)
+
+---
+
+### Pestaña 3: Datos Crediticios
+Configura los límites de compra autorizados, días de gracia y cuentas bancarias para transferencias SPEI:
+
+![Pestaña Datos Crediticios](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/06-tab-3-datos-crediticios.png)
+
+---
+
+### Guardar o Enviar Invitación Digital:
+- **Botón "Guardar":** Guarda el proveedor en el ERP inmediatamente para asociarlo a compras e inventario.
+- **Botón "Enviar invitación":** Envía un enlace seguro por correo al proveedor para que complete su expediente digital de alta de proveedor.
+
+---
+
+## 5. Menú de Acciones y Consulta de Ficha Técnica
+
+Al presionar el botón de tres puntos (`⋮`) o hacer clic directo sobre cualquier fila del proveedor:
+
+![Menú de Acciones](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-menu-acciones-abierto.png)
+
+---
+
+### Consulta y Modificación de Proveedor
+Permite revisar el historial de compras, actualizar plazos de pago o editar datos fiscales:
+
+![Ficha Detalle y Edición](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/07-detalle-edicion-proveedor.png)
+
+---
+
+## 6. Preguntas Frecuentes
+
+### ¿Qué diferencia hay entre "Proveedores" y "Proveedores de reparaciones"?
+> - **Catálogos > Proveedores (`/catalogos/proveedores`):** Son los fabricantes mayoristas y distribuidores a quienes Foly les compra muebles, línea blanca y artículos para venta en tienda.
+> - **Catálogos > Proveedores de reparaciones (`/catalogos/proveedores-reparaciones`):** Son los talleres técnicos especializados y centros de servicio autorizados encargados de reparar artículos con garantía de clientes.
+
+### ¿Cómo afecta el campo "Plazo de pagos (días)" a la tesorería?
+> Determina la fecha de vencimiento automática que se calcula al recibir una factura en el módulo de Cuentas por Pagar y Compras.
+
+### ¿Cómo se asigna una Cuenta Contable al proveedor?
+> En el campo *Cuenta contable*, escribe el nombre o número de subcuenta de pasivo (proveedores nacionales o extranjeros) para que los asientos contables de compra se generen automáticamente.

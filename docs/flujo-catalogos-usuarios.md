@@ -1,113 +1,117 @@
-# Flujo: Catálogos - Usuarios
+# Manual de Usuario: Catálogo de Usuarios
 
-## Fecha: 2026-08-17
-## Módulo: Catálogos > Usuarios
-## URL Listado: /catalogos/usuarios
-## URL Formulario Nuevo: /catalogos/usuarios/nuevo
-## Estado: Documentado y Verificado en Vivo
+**Módulo:** Catálogos > Usuarios  
+**Acceso en ERP:** Menú lateral > Catálogos > Usuarios (`/catalogos/usuarios`)  
+**Dirigido a:** Administradores del Sistema, Recursos Humanos, Seguridad de la Información y Gerencias  
 
 ---
 
-## 1. Descripción General
+## 1. ¿Para qué sirve este módulo?
 
-El submódulo **Usuarios** administra el directorio de colaboradores autorizados para operar en el sistema ERP Foly. Permite registrar nuevos empleados, asignarles su rol de seguridad, vincularlos a sus sucursales operativas, gestionar su estatus (Activo/Inactivo) y configurar el teléfono celular para el inicio de sesión seguro con doble factor de autenticación (**OTP vía WhatsApp**).
+El módulo de **Usuarios** es el panel central de administración y control de acceso del personal a la plataforma **ERP Foly**. Permite registrar nuevos colaboradores, asignarles roles de seguridad, vincularlos a sus sucursales operativas, gestionar su estatus y configurar el inicio de sesión seguro con doble factor de autenticación (**OTP vía WhatsApp**).
 
----
-
-## 2. Acceso al Módulo
-
-### Navegación por sidebar:
-1. Iniciar sesión en el ERP Foly como Administrador.
-2. En el menú lateral izquierdo, hacer clic en **Catálogos** para expandir las opciones.
-3. Seleccionar **Usuarios**.
-4. URL resultante: `/catalogos/usuarios`.
+A través de este catálogo se gestionan:
+- **Directorio de Colaboradores:** Registro oficial de empleados con su número celular y número de empleado.
+- **Asignación de Roles y Permisos:** Vinculación directa con los perfiles creados en **Catálogos > Roles**.
+- **Control de Acceso Multi-Sucursal:** Asignación precisa de una o múltiples tiendas donde el colaborador está autorizado a operar.
+- **Seguridad y Doble Factor (OTP):** Generación automática de contraseñas temporales por WhatsApp y verificación OTP en 2 pasos.
+- **Ciclo de Vida del Usuario:** Activación, desactivación inmediata y reinicio seguro de credenciales de acceso.
 
 ---
 
-## 3. Estructura de la Tabla de Usuarios
+## 2. Pantalla Principal y Listado de Usuarios
 
-La pantalla principal presenta el listado de personal con las siguientes columnas exactas:
+Al ingresar a **Catálogos > Usuarios**, se muestra la tabla con todos los colaboradores registrados en el sistema:
 
-| Columna | Descripción | Ejemplo en Sistema |
-|---------|-------------|-------------------|
-| **ID** | Identificador numérico de 4 dígitos del usuario. | `0001`, `0002` |
-| **Nombre** | Nombre(s) y Apellido(s) del colaborador. | `Administrador Sistema`, `Antonio Zamudio` |
-| **Rol** | Perfil de permisos asignado (definido en *Roles*). | `Administrador`, `Vendedor`, `Cajero` |
-| **Celular** | Número a 10 dígitos para autenticación OTP WhatsApp. | `6670000000` |
-| **Sucursales** | Sucursales a las que tiene acceso el colaborador. | `Foly Muebles Tampico Centro (+9)` |
-| **Caja** | Caja asignada para cobros en punto de venta. | `Sin asignar` / `Caja 1` |
-| **Estatus** | Estado operativo del usuario. | `Activo` / `Inactivo` |
-| **Fecha registro** | Fecha y hora en que se dio de alta en el sistema. | `29/07/26 8:11pm` |
-| **Últ. actualización** | Fecha del último cambio en permisos o datos. | `—` o fecha reciente |
-| **Acciones** | Menú de opciones (Editar usuario, Cambiar estatus, Reenviar invitación). | `⋮` |
+![Pantalla Principal - Listado de Usuarios](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/01-listado-usuarios.png)
 
-### Herramientas de Cabecera y Filtros:
-- **Buscador global (`Buscar`)**: Filtra en tiempo real por nombre, rol, celular o ID.
-- **Paginador**: Selector de registros por página (`10`, `25`, `50`).
-- **Botón "Nuevo"**: Botón azul ubicado arriba a la derecha que redirige a `/catalogos/usuarios/nuevo`.
+### Columnas de la Tabla:
+| Columna | Descripción | Ejemplo Real en Sistema |
+|---------|-------------|-------------------------|
+| **ID** | Identificador numérico único de 4 dígitos del usuario. | `0001`, `0002`, `0003`, `0004` |
+| **Nombre** | Nombre(s) y Apellido(s) completos del colaborador. | `Administrador Sistema`, `Antonio Zamudio`, `Carlos Ríos` |
+| **Rol** | Perfil de seguridad y permisos asignado (desde Catálogo de Roles). | `Administrador`, `Vendedor`, `Cajero` |
+| **Celular** | Número telefónico a 10 dígitos para autenticación OTP WhatsApp. | `6670000000`, `6672302174` |
+| **Sucursales** | Tiendas físicas y bodegas a las que tiene acceso. | `Foly Muebles Tampico Centro (+9)` |
+| **Caja** | Terminal de cobro asignada para punto de venta. | `Sin asignar` / `Caja 1` |
+| **Estatus** | Estado operativo del usuario en la plataforma. | Badge verde (*Activo*) / gris (*Inactivo*) |
+| **Fecha registro** | Fecha y hora en que se dio de alta en el ERP. | `29/07/26 8:11pm` |
+| **Últ. actualización** | Fecha y hora de la última modificación en sus datos. | `—` o fecha reciente |
+| **Acciones** | Menú desplegable para editar, reiniciar acceso o desactivar. | `⋮` |
 
 ---
 
-## 4. Formulario de Creación de Usuario (`/catalogos/usuarios/nuevo`)
+## 3. Búsqueda en Tiempo Real
 
-El formulario de alta está dividido en 3 secciones funcionales:
+Escribe en la barra de búsqueda el nombre, rol o número de celular del usuario para filtrar el listado al instante:
 
-### 4.1 Datos Generales
-> *Mensaje informativo del sistema: "Se generará una contraseña temporal y se enviará por WhatsApp al crear el usuario."*
-
-- **Nombre(s)**: Campo de texto obligatorio (`placeholder: Ej. Juan`).
-- **Apellido(s)**: Campo de texto obligatorio (`placeholder: Ej. Pérez García`).
-- **Número de empleado**: Identificador interno del personal (`placeholder: Máx. 8 caracteres`).
-
-### 4.2 Rol y Contacto
-- **Celular \***: Teléfono obligatorio a 10 dígitos (`placeholder: Ej. 8341234567`). Indispensable para recibir la contraseña temporal y códigos de acceso OTP.
-- **Selecciona un rol**: Menú desplegable con los roles registrados en `/catalogos/roles`.
-- **Requiere doble factor (OTP) para iniciar sesión**: Switch / casilla configurable (*"Sugerido según el rol seleccionado; puedes cambiarlo antes de guardar"*).
-
-### 4.3 Sucursal Asignada
-Permite definir las tiendas y almacenes en los que el usuario puede operar:
-- **Casilla "Seleccionar todas"**: Otorga acceso global a todas las tiendas.
-- **Listado de Sucursales:**
-  - Foly Muebles Altamira
-  - Foly Muebles Avenida Monterrey
-  - Foly Muebles Bodega Tampico
-  - Foly Muebles Coatzacoalcos
-  - Foly Muebles Ejército Mexicano
-  - Foly Muebles Pánuco
-  - Foly Muebles San Luis Potosí Carranza
-  - Foly Muebles San Luis Potosí Soledad
-  - Foly Muebles Tampico Aeropuerto
-  - Foly Muebles Tampico Centro
-  - Foly Muebles Veracruz Puerto
+![Búsqueda Dinámica](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/CAv02-busqueda-filtrada.png)
 
 ---
 
-## 5. Flujo Operativo: Alta y Envío de Invitación
+## 4. Paso a Paso: Cómo Dar de Alta un Nuevo Usuario
 
-```
-[1. Catálogos > Usuarios]
-          ↓
-[2. Clic en botón "Nuevo"] → Abre /catalogos/usuarios/nuevo
-          ↓
-[3. Ingresar Datos Generales]: Nombre(s), Apellido(s), No. de Empleado
-          ↓
-[4. Configurar Contacto]: Celular (10 dígitos), Selección de Rol, Check OTP
-          ↓
-[5. Asignar Sucursal(es)]: Marcar tiendas permitidas
-          ↓
-[6. Clic en "Enviar invitación"]
-          ↓
-[7. Notificación WhatsApp]: El empleado recibe su contraseña temporal
-          ↓
-[8. Primer Acceso]: Inicia sesión, valida código OTP y actualiza su contraseña
-```
+### Paso 1: Abrir el Formulario
+Haz clic en el botón azul **"+ Nuevo"** en la esquina superior derecha:
+
+![Formulario Nuevo Usuario](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/03-formulario-nuevo-usuario.png)
+
+> **Aviso del Sistema:** *"Se generará una contraseña temporal y se enviará por WhatsApp al crear el usuario."*
+
+### Paso 2: Datos Generales
+1. **Nombre(s) (\*):** Ingresa el nombre de pila del colaborador (ej. `Juan`).
+2. **Apellido(s) (\*):** Ingresa los apellidos (ej. `Pérez García`).
+3. **Número de empleado:** Ingresa el identificador interno del personal (máximo 8 caracteres).
+
+### Paso 3: Rol y Contacto
+1. **Celular (\*):** Ingresa el número de teléfono celular a 10 dígitos (ej. `8341234567`). Es indispensable para recibir la contraseña temporal y los códigos OTP.
+2. **Selecciona un rol (\*):** Selecciona el rol correspondiente definido en **Catálogos > Roles**.
+3. **Requiere doble factor (OTP) para iniciar sesión:** Marca la casilla para exigir el código de seguridad enviado a WhatsApp al iniciar sesión.
+
+### Paso 4: Asignar Sucursales
+Marca las casillas de las tiendas físicas donde operará el usuario:
+- Casilla **"Seleccionar todas"** para personal corporativo o supervisores con acceso a todas las tiendas.
+- O selecciona individualmente entre las 11 sucursales disponibles.
+
+### Paso 5: Guardar y Enviar Invitación
+Haz clic en el botón **"Enviar invitación"** o **"Guardar"**. El ERP registrará al usuario y enviará automáticamente un mensaje de WhatsApp con su contraseña temporal de acceso.
 
 ---
 
-## 6. Reglas de Negocio y Seguridad
+## 5. Menú de Acciones por Usuario
 
-1. **Unicidad de Celular**: No pueden existir dos usuarios activos con el mismo número de celular registrado (a 10 dígitos).
-2. **Generación Automática de Contraseña**: No se ingresa contraseña manual; el ERP genera una clave segura y la despacha al WhatsApp del empleado.
-3. **Control de Cajas**: Si el rol asignado es de tipo Cajero, se vincula a una caja abierta en **Catálogos > Cajas**.
-4. **Restricción por Sucursal**: Las operaciones de venta, cobranza y traspasos se limitan a las sucursales asignadas.
-5. **Desactivación Inmediata**: Al cambiar el estatus a *Inactivo*, las sesiones activas del colaborador se revocan al instante.
+Al hacer clic en el botón de tres puntos (`⋮`) en cualquier fila del listado, se despliegan las siguientes operaciones:
+
+![Menú de Acciones](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/e6804-menu-acciones.png)
+
+- **Editar:** Abre la pantalla de edición para modificar datos personales, rol o sucursales asignadas.
+- **Reiniciar acceso:** Envía de inmediato una nueva contraseña temporal por WhatsApp al teléfono registrado.
+- **Desactivar / Activar:** Suspende o reactiva el acceso del usuario al sistema en tiempo real.
+
+---
+
+## 6. Edición y Desactivación de Usuarios
+
+### 6.1 Modificar Datos de un Usuario
+Para actualizar el rol, número telefónico o agregar nuevas sucursales a un colaborador, selecciona **Editar** en el menú de acciones:
+
+![Formulario Editar Usuario](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/05-formulario-editar-usuario.png)
+
+### 6.2 Confirmación de Desactivación
+Al hacer clic en **Desactivar**, el sistema presenta un diálogo de confirmación para evitar suspensiones por error:
+
+![Diálogo Desactivar Usuario](https://folydocs.whipple.mx/uploads/images/gallery/2026-08/06-dialogo-desactivar-usuario.png)
+
+---
+
+## 7. Preguntas Frecuentes (FAQ)
+
+### ¿Qué hago si el colaborador no recibe el mensaje de WhatsApp con su contraseña?
+Abre el menú de acciones (`⋮`) en la fila del colaborador y selecciona **"Reiniciar acceso"**. Esto generará una nueva clave temporal y reenviará el mensaje al celular registrado.
+
+### ¿Un usuario puede tener acceso a más de una sucursal?
+Sí. En la sección **Sucursal Asignada** puedes marcar múltiples casillas individuales o hacer clic en **"Seleccionar todas"** para usuarios con responsabilidades gerenciales o de auditoría.
+
+### ¿Qué sucede cuando un usuario es Desactivado?
+Sus sesiones activas son revocadas de manera inmediata. No podrá ingresar al sistema ERP ni a las terminales de cobro hasta que un administrador lo vuelva a reactivar.
+
